@@ -1,0 +1,163 @@
+extend ../common
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    section#section
+        dl.dl_pannel_account.dl_bankAcountInfo
+            dt 银行存管账户信息
+            if !userInfo.bindSerialNo
+                dd.content
+                    .pad-top-15.pad-bottom-10 开通存管账户
+                    div.alert_info 请填写您的个人真实信息，若在其他P2P平台已开通浙商银行存管账户，请输入在其他平台填写的银行卡号和预留手机号。
+                    ul.form_vertical
+                        li.form-group
+                            label 真实姓名：
+                            if userInfo.username
+                                input.form-control#userName(placeholder='请输入真实姓名',name='userName',value=userInfo.username,disabled)
+                            else
+                                input.form-control#userName(placeholder='请输入真实姓名',name='userName')
+                            .form-error
+
+                        li.form-group
+                            label 证件类型：
+                            .form-control 身份证
+                        li.form-group
+                            label 身份证号：
+                            if userInfo.certNo
+                                input.form-control#certNo(placeholder='请输入15位或18位身份证号',name='certNo',value=userInfo.certNo,disabled)
+                            else
+                                input.form-control#certNo(placeholder='请输入15位或18位身份证号',name='certNo')
+                            .form-error
+                        li.form-group
+                            label 银行卡号：
+                            input.form-control#otherAccNo(placeholder='请输入银行卡号',name='otherAccno',onkeyup="value=value.replace(/[^\\d]/g,'')")
+                            .form-error
+                        li.form-group
+                            label 开户银行：
+                            dl.dl_dropdown
+                                dt
+                                    span.bankType 开户银行
+                                    i.fa.fa-caret-down.caret
+                                .form-error
+                                dd
+                                    ul#bankList
+                            p#bankQuota.hidden(style='white-space:nowrap')
+                                i.fa.fa-exclamation-circle.color-gray.fa-fw
+                                |单笔转入限额（元）：
+                                span.quotasingle 20000
+                                |&emsp;日累计转入限额（元）：
+                                span.quotadaily 20000
+                        li.form-group(style='width:360px')
+                            label 开户银行支行：
+                            dl.dl_dropdown
+                                input.form-control#branchNo(placeholder='请输入开户银行支行',name='branchNo')
+                                .form-error
+                                dd
+                                    ul#branchNoList
+                            #branchNoTip.color-red
+                                i.fa.fa-exclamation-circle.color-gray.fa-fw
+                                |请输入支行关键字进行查询，请慎重筛选开户行支行信息，
+                                br
+                                |&emsp;&nbsp;以免提现时遇到问题导致提现失败！
+                        li.form-group
+                            label 银行预留手机号：
+                            input.form-control#mobile(placeholder='请输入银行预留手机号',name='mobile',onkeyup="value=value.replace(/[^\\d]/g,'')")
+                            .form-error
+                        li.form-group(style='width:150px')
+                            label 手机验证码：
+                            input.form-control#mobileCode(placeholder='请输入手机验证码',name='vCode')
+                            a.btn.btn_send_code(href='javascript:;') 获取验证码
+                            .form-error
+                        a.btn.btn-default#btn_submit(href='javascript:;') 确认开通并绑卡
+                        //-
+                            .pad-top-10(style='width:660px')
+                                label
+                                    input(type='checkbox',checked)
+                                    span
+                                    | 开通增金宝，我已阅读并同意
+                                a(href='#') 《浙商银行增金宝服务协议》、
+                                a(href='#') 《浙商银行基金出借者权益须知》
+                                br
+                                | &emsp;（浙商卡无法直接开通增金宝，需到银行办理此业务开通）
+                        .pad-top-10(style='width:680px')
+                            label.label_checkbox
+                                input(type='checkbox')#checkRead
+                                span.ico
+                                | 我已阅读并同意
+                            a(href=website + '/zsyhwtkkywfwxy.html',target='_blank') 《浙商银行委托扣款业务服务协议》、
+                            a(href=website + '/zsyhwljdjyzjcgywsfxy.html',target='_blank') 《浙商银行网络借贷交易资金存管业务三方协议》
+                            p.color-red#agree
+                                i.fa.fa-exclamation-circle.color-gray.fa-fw
+                                | 请同意《浙商银行委托扣款业务服务协议》、《浙商银行网络借贷交易资金存管业务三方协议》
+            if userInfo.bindSerialNo
+                dd.content
+                    ul.form_vertical.pad-top-20
+                        li.form-group
+                            label 存管账号：
+                            span.form-control.color-black.username #{userInfo.ecardNo}
+                        li.form-group
+                            label 真实姓名：
+                            span.form-control.color-black.username #{userInfo.username}
+                        li.form-group
+                            label 证件类型：
+                            span.form-control.color-black 身份证
+                        li.form-group
+                            label 身份证号：
+                            span.form-control.color-black.certNo #{userInfo.certNo}
+                        li.form-group.card_bank_info
+                            label 开户银行：
+                            .card_bank(style='margin-left:0;')
+                                .content
+                                    div.text-left.ico_bank
+                                        img(src=website+'/images/banks/YH'+userInfo.bankCode+'.png',width='144',height='44')
+                                    div.num ….  ….   ….
+                                        span #{userInfo.bankCard}
+                                footer 支付限额：单笔#{userInfo.quotaSingle}万，单日#{userInfo.quotaDaily}万
+                        li.form-group
+                            label 银行预留手机号：
+                            span.form-control.color-black.bank_mobile #{userInfo.mobile}
+            else
+                dd.content.hidden
+                    .pad-top-15.pad-bottom-40 开通存管账户
+                    ul.form_vertical
+                        li.form-group
+                            label 真实姓名：
+                            span.form-control.color-black.username 王**
+                        li.form-group
+                            label 证件类型：
+                            span.form-control.color-black 身份证
+                        li.form-group
+                            label 身份证号：
+                            span.form-control.color-black.certNo 142724*******945678
+                        li.form-group.card_bank_info
+                            label 开户银行：
+                            .card_bank
+                                .content
+                                    div.text-left.ico_bank
+                                        img(src=website+'/images/banks/recharge_5.gif',width='144',height='44')
+                                    div.num ….  ….   ….
+                                        span 8888
+                                footer 支付限额：单笔10.00万，单日10.00万
+                        li.form-group
+                            label 银行预留手机号：
+                            span.form-control.color-black.bank_mobile 1346657866
+            dd.important_tips
+                strong 温馨提示：
+                ul
+                    li 如果您绑定的是浙商银行卡，则您的浙商卡即为您的存管账户，投资时无需充值，可直接使用浙商卡进行投资。投资到期回款资金直接进入浙商卡，无需提现。
+                    //li 1、资金充值到您在金投手的账户中才可以进行出借。
+                    //li 2、仅支持储蓄卡进行充值。
+                    //li 3、充值成功后，充值银行卡自动作为您在金投手的绑定银行卡。为保障您资金安全，您在金投手充值、提现操作只能使用该卡。
+                    //li 4、金投手严禁信用卡套现、转账及利用充值功能进行洗钱等行为，一经发现将予以处罚（包括但不限于：限制收款、冻结账户、
+                    //    br
+                    //    | &emsp;&nbsp;永久停止服务）。
+                    //li 5、充值过程中如遇问题，请及时联系客服：400-101-7660。
+        input(type='hidden' id='signTicket' name='signTicket' value='#{signTicket}')
+        input(type='hidden' id='signToken' name='signToken' value='#{signToken}')
+
+block script
+    include ../jslib/account/bankaccountinfojs

@@ -1,0 +1,22 @@
+extend ../common
+block main
+block position
+    - var position=true
+block leftnav
+    -var leftnav=true
+block right_help
+    .right_tzzjy
+        h3 公司报告
+        dl.dl_tab.report_list
+            dt
+                a.active(href='javascript:;',style='width:254px;') 会计师事务所审计报告
+                a(href='javascript:;',style='width:258px;')
+                    span.pull-left
+                    |律师事务所合规报告
+                    span.pull-right
+                a(href='javascript:;',style='width:340px;') 信息安全测评认证机构信息安全报告
+            dd.active
+                ul#reportlist
+
+block script
+    include ../jslib/aboutus/reportlistjs

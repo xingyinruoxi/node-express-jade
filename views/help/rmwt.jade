@@ -1,0 +1,68 @@
+extend ../common
+block position
+    //- var position=true
+    //面包屑导航开始
+    .container.breadcrumb 您所在的位置：
+        ol
+            li
+                a(href=website+'/') 首页
+            li
+                a(href=website+'/help/') 帮助中心
+            li 热门问题
+block content
+    //帮助中心常见问题左侧导航
+    section.container
+     .left_nav
+        ul
+            li.hot_problem
+                a 热门问题
+            if helpType=='暂无数据'
+                li.other
+                    a 暂无数据
+                li.other
+                    a 暂无数据
+                li.other
+                    a 暂无数据
+            else
+                -var items=helpType;
+                    each item in items
+                     li.other(tid=item.id)
+                        a #{item.name}（#{item.total}）
+     .right_list
+        dt.top-title 热门问题
+        dd.list-notice.clearfix
+            div(style="margin-top:20px")
+                //dl.question-item.padding-bottom
+                    dt
+                        i.fa.fa-angle-right
+                        i.fa.fa-angle-down.hidden
+                        span Q：注册、出借，提现手机验证码收不到？
+
+                    dd.clearfix.color-gray-999.hidden
+                        p
+                        p 1.建议检查一下手机软件是否设置屏蔽，如果有屏蔽软件，可以暂时关闭；
+                        p 2.如果确实没有屏蔽的情况，可能由于网络传输问题，建议您换个时间段再试。
+                        p
+                        a.pull-right.color-gray.pad-bottom-10(href="javascript:;") 收起
+                        p.pad-top-20.pad-bottom-10(style="clear:both;width:856px;margin-left:-15px;")
+                        div.pull-left 该回答是否解决了您的问题？
+                        span.help-solve 解决
+                        span.help-solve-no 没有，需人工帮助解答
+                        p
+                        div.help-solve-state.solve.hidden
+                            img(src="https://www.jintoushou.com/source/img/help/caret.png")
+                            span 已提交，感谢您的反馈！
+                        div.help-solve-state.help-solve-state-no.text-center.hidden
+                            img(src="https://www.jintoushou.com/source/img/help/caret.png")
+                            span 已提交，感谢您的反馈！
+                            p.color-black 客服电话：400-101-7660
+                            p.pad-bottom-10 （工作日 9:00-21:00；非工作日 9:00-18:00）
+                            a.help-service(href="http://www.sobot.com/chat/pc/index.html?sysNum=700b7ec5c8884e6fbc16baedf679ceca" target="_blank") 点此咨询在线客服
+                            br
+
+                dl.question-item
+                    span 暂无数据
+
+
+block script
+    include ../jslib/help/rmwtjs

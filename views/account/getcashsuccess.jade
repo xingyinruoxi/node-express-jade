@@ -1,0 +1,17 @@
+extend ../common
+block position
+    - var position=true
+block main
+    section.container.bg-white
+        .rechargeResult
+            div
+                i.ico.ico_success
+            span.title 恭喜您，提现申请成功！
+            p 本次提现金额(元)：
+                span#this_cash
+                |&emsp;
+                span 当前账户余额(元)：
+                span #{accountInfo.accountBalance}
+            a.btn.btn-default(href=website+'/user/getcash.html') 继续提现
+block script
+    include ../jslib/account/getcashsuccessjs

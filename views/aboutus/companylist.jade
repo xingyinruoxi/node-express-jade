@@ -1,0 +1,14 @@
+extend ../common
+block main
+block position
+    - var position=true
+block leftnav
+    -var leftnav=true
+block right_help
+    .right_xxpl
+        h3 公司动态
+        ul#companyList
+        .pagination
+    input(id='imageHost',type='hidden',value=imageHost)
+block script
+    include ../jslib/aboutus/companylistjs

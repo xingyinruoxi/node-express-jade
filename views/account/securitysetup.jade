@@ -1,0 +1,362 @@
+extend ../common
+block style
+    style.
+        #alertresult{
+            padding:20px 45px 35px;
+            font-size:18px;
+            line-height:30px;
+            text-align: justify;
+        }
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    section#section
+        dl#security.dl_pannel_account
+            dt 安全设置
+            dd(style='padding-top: 25px')
+                .row
+                    .col-20.font16 您的帐户安全等级：
+                    .account_progress_box.pull-left
+                        .account_progress
+                            .account_progress_bar(style='width:#{result.percent}%;')
+                    .pull-left &emsp;#{result.level}
+                .row.securitysetup_list.pad-top-10
+                    .col-20
+                        .fa.fa-check-circle.color-green
+                        span &emsp;手机认证
+                    .col-40 #{result.mixMobile}
+                    .col-30 已认证
+                .row.securitysetup_list
+                    if !result.bindSerialNo
+                        .col-20
+                            .fa.fa-exclamation-circle.color-red
+                            span &emsp;银行存管账户
+                        .col-40 开通银行存管账户方可进行充值、出借
+                        .col-30
+                            a(href=website+'/user/bankaccountinfo.html') 未开通
+                    else
+                        .col-20
+                            .fa.fa-check-circle.color-green
+                            span &emsp;银行存管账户
+                    if result.mixBankCard &&  result.mixRealName
+                        .col-40 #{result.mixBankCard}（#{result.mixRealName}）
+                        .col-30
+                            span 已开通
+                .row.securitysetup_list
+                    .col-20
+                        .fa.fa-check-circle.color-green
+                        span &emsp;登录密码
+                    .col-40 已设置
+                    .col-30
+                        a(href=website+'/changepwdstart.html') 修改
+                .row.securitysetup_list
+                    -var riskChinese= result.riskRating
+                    .col-20
+                        if !riskChinese
+                            .fa.fa-exclamation-circle.color-red
+                        else
+                            .fa.fa-check-circle.color-green
+                        span &emsp;风险测评
+                    .col-40
+                        if !riskChinese
+                            |评估有利益您清楚了解自己的出借定位
+                        else
+                            case riskChinese
+                                when '1'
+                                    |保守型
+                                when '2'
+                                    |稳健型
+                                when '3'
+                                    |平衡型
+                                when '4'
+                                    |积极型
+                                when '5'
+                                    |激进型
+                    .col-30
+                        a#assess(href='javascript:;')
+                            if !riskChinese
+                                |立即评估
+                            else
+                                |重新评估
+                .row.securitysetup_list.pad-top-10(style='margin-bottom:125px;')
+                    .col-20
+                        .fa.fa-check-circle.color-green
+                        span &emsp;平台协议
+                    .col-40
+                        a(href=website + '/xieyi.html',target='_blank') 《金投手用户注册协议》
+                        a(href=website + '/ysbmxy.html',target='_blank') 《用户隐私保密协议》
+                    .col-30 已同意
+        dl#assessment.dl_pannel_account.hidden
+            dt
+                a#backSet(href='javascript:;') 返回安全设置
+                a.pull-right.color-red 出借人须知
+            dd.layer_question.securitytesting_question
+                .font16.pad-top-30.pad-bottom-10 风险提示：网络借贷出借人可能获得比较高的借款利息，但也存在比较大的出借风险，请您根据自身的风险承受能力，审慎作出出借决定。
+                h5 一、年龄
+                ol
+                    li
+                        span.ask 1.您的年龄是？
+                        .answer
+                            label
+                                input(type='radio',name='age1')
+                                span.ico.ico_radio
+                                | A.18-25
+                            label
+                                input(type='radio',name='age1')
+                                span.ico.ico_radio
+                                | B.26-50
+                            label
+                                input(type='radio',name='age1')
+                                span.ico.ico_radio
+                                | C.51-60
+                            label
+                                input(type='radio',name='age1')
+                                span.ico.ico_radio
+                                | D.61-65
+                            label
+                                input(type='radio',name='age1')
+                                span.ico.ico_radio
+                                | E.高于65岁
+                h5 二、财务状况
+                ol
+                    li
+                        span.ask 2.您的家庭总资产净值为？(不包括自用住宅和私营企业等实业出借，包括储蓄、保险、金融出借、实物出借，并需扣除未结清贷款、信用卡账单等债务)
+                        .answer
+                            label
+                                input(type='radio',name='age2')
+                                span.ico.ico_radio
+                                | A.小于等于15万元
+                            label
+                                input(type='radio',name='age2')
+                                span.ico.ico_radio
+                                | B.大于15万元，小于等于50万元
+                            label
+                                input(type='radio',name='age2')
+                                span.ico.ico_radio
+                                | C.大于50万元，小于等于100万元
+                            label.space
+                                input(type='radio',name='age2')
+                                span.ico.ico_radio
+                                | D.大于100万元，小于等于1,000万元
+                            label
+                                input(type='radio',name='age2')
+                                span.ico.ico_radio
+                                | E.大于1,000万元
+                ol
+                    li
+                        span.ask 3. 在您的家庭总资产净值中，可用于金融出借(储蓄存款除外)的比例为？
+                        .answer
+                            label
+                                input(type='radio',name='age3')
+                                span.ico.ico_radio
+                                | A.小于10%
+                            label
+                                input(type='radio',name='age3')
+                                span.ico.ico_radio
+                                | B.10%—25%
+                            label
+                                input(type='radio',name='age3')
+                                span.ico.ico_radio
+                                | C.26%—50%
+                            label
+                                input(type='radio',name='age3')
+                                span.ico.ico_radio
+                                | D.大于50%
+                h5 三、出借经验 (任一项选 A 客户均视为无出借经验客户)
+                ol
+                    li
+                        span.ask 4.以下哪项最能说明您的出借经验？
+                        .answer
+                            label
+                                input(type='radio',name='age4')
+                                span.ico.ico_radio
+                                | A.除存款、国债外，我几乎不出借其他金融产品
+                            label
+                                input(type='radio',name='age4')
+                                span.ico.ico_radio
+                                | B.10%—25%
+                            label
+                                input(type='radio',name='age4')
+                                span.ico.ico_radio
+                                | C.26%—50%
+                            label.space
+                                input(type='radio',name='age4')
+                                span.ico.ico_radio
+                                | D.大于50%
+
+                ol
+                    li
+                        span.ask 5.您出借股票、基金、外汇、金融衍生品等风险出借品的经验是（出借经历越长，您的风险承受能力越强）？
+                        .answer
+                            label
+                                input(type='radio',name='age5')
+                                span.ico.ico_radio
+                                | A.没有经验
+                            label
+                                input(type='radio',name='age5')
+                                span.ico.ico_radio
+                                | B.有经验，但少于2年
+                            label
+                                input(type='radio',name='age5')
+                                span.ico.ico_radio
+                                | C.达到或超过2年，不足5年
+                            label.space
+                                input(type='radio',name='age5')
+                                span.ico.ico_radio
+                                | D.达到或超过5年，不足8年
+                            label
+                                input(type='radio',name='age5')
+                                span.ico.ico_radio
+                                | E.8年及以上
+                h5  四、 出借偏好
+                ol
+                    li
+                        span.ask 6.以下哪项描述最符合您的出借态度？
+                        .answer
+                            label
+                                input(type='radio',name='age6')
+                                span.ico.ico_radio
+                                | A.厌恶风险，不希望本金损失，希望获得稳定回报
+                            label.block
+                                input(type='radio',name='age6')
+                                span.ico.ico_radio
+                                | B.保守出借，不希望本金损失，愿意承担一定幅度的收益波动
+                            label.block
+                                input(type='radio',name='age6')
+                                span.ico.ico_radio
+                                | C.寻求资金的较高收益和成长性，愿意为此承担有限本金损失
+                            label.block
+                                input(type='radio',name='age6')
+                                span.ico.ico_radio
+                                | D.希望赚取高回报，愿意为此承担较大本金损失
+                ol
+                    li
+                        span 7.假设您有本金100万元，不提供保本承诺的情况下，您会选择哪一种出借机会？
+                        .answer
+                            label
+                                input(type='radio',name='age7')
+                                span.ico.ico_radio
+                                | A.有100%的机会赢取1000元现金，并保证归还
+                            label.block
+                                input(type='radio',name='age7')
+                                span.ico.ico_radio
+                                | B.有50%的机会赢取5万元现金，并有较高可能性归还本金
+                            label.block
+                                input(type='radio',name='age7')
+                                span.ico.ico_radio
+                                | C.有25%的机会赢取50万元现金，并有一定的可能性损失本金
+                            label.block
+                                input(type='radio',name='age7')
+                                span.ico.ico_radio
+                                | D.有10%的机会赢取100万元现金，并有较高可能性损失本金
+                ol
+                    li
+                        span.ask 8. 您计划的出借期限是多久？
+                        .answer
+                            label
+                                input(type='radio',name='age8')
+                                span.ico.ico_radio
+                                | A.1年以下
+                            label
+                                input(type='radio',name='age8')
+                                span.ico.ico_radio
+                                | B.1-3年
+                            label
+                                input(type='radio',name='age8')
+                                span.ico.ico_radio
+                                | C.3—5年
+                            label
+                                input(type='radio',name='age8')
+                                span.ico.ico_radio
+                                | D.5年以上
+                ol
+                    li
+                        span.ask 9. 您进行出借的主要目的是？
+                        .answer
+                            label
+                                input(type='radio',name='age9')
+                                span.ico.ico_radio
+                                | A.资产保值，不愿意承担任何出借风险
+                            label
+                                input(type='radio',name='age9')
+                                span.ico.ico_radio
+                                | B.资产稳健增值，可以承担一定的出借风险
+                            label.space
+                                input(type='radio',name='age9')
+                                span.ico.ico_radio
+                                | C.资产迅速增值，愿意承担较大的出借风险
+                h5  五、风险承受能力
+                ol
+                    li
+                        span.ask 10. 您的出借出现何种程度的波动时，您会呈现明显的焦虑？
+                        .answer
+                            label
+                                input(type='radio',name='age10')
+                                span.ico.ico_radio
+                                | A.本金无损失，但收益未达预期
+                            label
+                                input(type='radio',name='age10')
+                                span.ico.ico_radio
+                                | B.出现轻微本金损失
+                            label
+                                input(type='radio',name='age10')
+                                span.ico.ico_radio
+                                | C.本金10%以内的损失
+                            label.space
+                                input(type='radio',name='age10')
+                                span.ico.ico_radio
+                                | D.本金20%—50%的损失
+                            label
+                                input(type='radio',name='age10')
+                                span.ico.ico_radio
+                                | E.本金50%以上损失
+                ol
+                    li
+                        span.ask 11、对您而言，保本比高收益更为重要？
+                        .answer
+                            label
+                                input(type='radio',name='age11')
+                                span.ico.ico_radio
+                                | A.非常同意
+                            label
+                                input(type='radio',name='age11')
+                                span.ico.ico_radio
+                                | B.同意
+                            label
+                                input(type='radio',name='age11')
+                                span.ico.ico_radio
+                                | C.无所谓
+                            label
+                                input(type='radio',name='age11')
+                                span.ico.ico_radio
+                                | D. 不同意
+                            label
+                                input(type='radio',name='age11')
+                                span.ico.ico_radio
+                                | E.非常不同意
+
+                .submit
+                    .submit_tip
+                        p.color-red.hidden
+                            i.fa.fa-exclamation-circle.color-gray.fa-fw
+                            span#tip 有未勾选项目
+                    a.btn 提交测评
+
+
+        div#alertresult.hidden.text-left
+            p 尊敬的出借人：
+            p.text-indent 为了便于您了解自身的风险承受能力，选择合适的标的进行出借，请您填写以下“客户风险认知与风险承受能力评估调查问卷”。下列问题可协助您对出借标的和服务的风险承受能力进行评估，请您根据自身情况认真选择。评估结果仅供参考，不构成出借建议。为了及时了解您的风险承受能力，及不影响您的出借交易，我们建议您持续做好动态评估。 我们承诺对您的所有个人资料保密。
+            p 另，请您特别注意以下内容：
+            p 1、按照监管要求，参与网络借贷的出借人，应当具备投资风险意识、风险识别能力、拥有非保本类金融产品投资的经历并熟悉互联网。故您在填写本问卷前，请您确认自己符合本条的要求。在您完成本问卷调查后，金投手平台将默认您同意并确认“您已经具备投资风险意识、风险识别能力、拥有非保本类金融产品投资的经历并熟悉互联网”，同时将根据测评计分模型为您评估出测评结果。
+            p 2、测评结果有效期为1年（自然年），超过1年的，系统将提示您进行重新测评。
+            p 3、您在1个自然年之内，最多可以测评3次，以最近一次测评结果为准。
+            p 4、如果您最近的风险测评结果已过期，且未进行重新测评时，平台将按监管要求不得为您提供借款标的出借交易服务。
+        input(type='hidden' id='signTicket' name='signTicket' value='#{signTicket}')
+        input(type='hidden' id='signToken' name='signToken' value='#{signToken}')
+
+block script
+    include ../jslib/account/securitysetupjs

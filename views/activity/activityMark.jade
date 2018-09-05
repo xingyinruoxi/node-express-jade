@@ -1,0 +1,56 @@
+extend ../common
+block style
+    style.
+        #footer{
+           margin-top:0;
+        }
+block main
+    section.activity_mark_banner
+    .activity_mark1
+        .activity_mark
+            .row
+                .col-33
+                    h3 金投手
+                    p(style='margin-left:-6px;') 每个项目中，累计投资金额最多的用户
+                    p 奖励
+                        span.color-red 100元
+                        |抵现红包
+                    .activity_mark_btn
+                        a(href='#') 立即投资
+                .col-33
+                    h3 速投手
+                    p 每个项目，第一位投资用户
+                    p 奖励
+                        span.color-red 50元
+                        | 抵现红包
+                    .activity_mark_btn
+                        a(href='#') 立即投资
+                .col-33
+                    h3 神投手
+                    p 每个项目，最后一位投资用户，
+                    p 奖励
+                        span.color-red 50元
+                        | 抵现红包
+                    .activity_mark_btn
+                        a(href='#') 立即投资
+    .activity_mark2
+        .activity_rules.activity_rules1
+            h4 奖励发放
+            p.pad-top-20 “满标有礼”活动红包将于用户项目募集完成时发放，相应奖券请到
+            p “我的账户——我的奖励——抵现红包”中查看，红包有效期为7天
+    .activity_mark3
+        .activity_rules.activity_rules2
+            h4 注意事项
+            ol
+                li 1、投资时，红包可以直接抵扣本金，但不能提现或转赠；
+                li 2、红包使用规则以账户内红包说明为准；
+                li 3、本活动最终解释权归金投手所有，客服电话：400-101-7660；
+                li 4、
+                    a 活动免责声明
+                    |。
+                li.pad-top-30 如遇下列情况，系统将收回该用户在金投手获得的红包组及其收益；
+                li.font16 ①用户通过非正当手段恶意刷取红包组；
+                li.font16 ②盗用户他人身份信息获取红包组；
+                li.font16 ③其他违规行为；
+block script
+    include ../jslib/activity/activityMarkjs

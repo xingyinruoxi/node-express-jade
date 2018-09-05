@@ -1,0 +1,317 @@
+extend common
+
+block main
+    //轮播图
+    div.carousel_wrapper(id='carousel01')
+        if has.advertise
+            ul
+                - var advertise=indexInfo.advertise
+                each item,i in advertise
+                    - var curShow=(i===0?'active':'')
+                    -var imgUrl=item.advertisePicture
+                    li.carousel_slide(style='background: url("'+(imgUrl.indexOf('http')?imageHost:'')+imgUrl+'") repeat-x center;',class=curShow)
+                        a(href=item.targetUrl,target='_blank') &nbsp;
+            div.carousel_pagination
+                - for(var j=0;j<advertise.length;j++)
+                - var curShow=(j===0?'active':'')
+                span(class=curShow)
+                a(href='javascript:;').next
+                a(href='javascript:;').prev
+        else
+            ul
+                li.carousel_slide(style='background: url("https://tefms.jintoushou.com//upload/websitead/picture/16042820164366635221/1487213628977_1872130543935674524.png") no-repeat center;',class='active')
+                    a(href='javascript:') &nbsp;
+        div.board
+            h3.board_heading 历史平均收益率
+            div.board_body 4%
+            div.board_footer
+                if tel
+                    a.btn.btn-default(href=website+'/onSaleingProduct/') 立即出借
+                else
+                    a.btn.btn-default(href=website+'/signup.html') 注册领红包
+                    div
+                        a.btn_login(href=website+'/signin.html') 已有账号&nbsp;立即登录
+    //主体内容
+    section.container.bg-none(style='position:relative;')
+        div.product_statistics
+            div.row
+                if has.indexStatisticsVO
+                    - var indexStatisticsVO=indexInfo.indexStatisticsVO;
+                    div.col-25
+                        a(href=website+'/xxpl/yysj.html',target='_blank').border_right
+                            div.icon.icon_hammer
+                            span.title 累计撮合成交额
+                            if indexStatisticsVO.totalAmount
+                                p.num #{indexStatisticsVO.totalAmount}
+                                    span 亿
+                            else
+                                p.color-gray.font24 暂无数据
+                    div.col-25
+                        a(href=website+'/xxpl/yysj.html',target='_blank').border_right
+                            div.icon.icon_history
+                            span.title 到期兑付利息
+                            if indexStatisticsVO.totalInterest
+                                p.num #{indexStatisticsVO.totalInterest}
+                                    span 万
+                            else
+                                p.color-gray.font24 暂无数据
+                    div.col-25
+                        a(href=website+'/xxpl/yysj.html',target='_blank').border_right
+                            div.icon.icon_user
+                            span.title 注册用户数量
+                            if indexStatisticsVO.totalUser
+                                p.num #{indexStatisticsVO.totalUser}
+                                    span 人
+                            else
+                                p.color-gray.font24 暂无数据
+                    div.col-25
+                        a(href=website+'/xxpl/yysj.html',target='_blank').border_right.last
+                            div.icon.icon_chart
+                            span.title 平台稳定运营
+                            p.num #{indexStatisticsVO.runDay}
+                                span 天
+                else
+                    div.col-25
+                        a(href=website+'/xxpl/yysj.html',target='_blank').border_right
+                            div.icon.icon_hammer
+                            span.title 累计撮合成交额
+                            p.color-gray.font24 暂无数据
+                    div.col-25
+                        a(href=website+'/xxpl/yysj.html',target='_blank').border_right
+                            div.icon.icon_history
+                            span.title 到期兑付利息
+                            p.color-gray.font24 暂无数据
+                    div.col-25
+                        a(href=website+'/xxpl/yysj.html',target='_blank').border_right
+                            div.icon.icon_user
+                            span.title 注册用户数量
+                            p.color-gray.font24 暂无数据
+                    div.col-25
+                        a(href=website+'/xxpl/yysj.html',target='_blank').border_right.last
+                            div.icon.icon_chart
+                            span.title 平台稳定运营
+                            p.color-gray.font24 暂无数据
+        //公告开始
+        div.notice
+            span 公告：
+            div.FontScroll(id='FontScroll')
+                ul.list_unstyled
+                    if has.notices
+                        - var notices=indexInfo.notices
+                        each item in notices
+                            if item.id&&item.title
+                                li
+                                    a(href=website+'/xxpl/tzgg/detail'+item.id+'.html',target='_blank') #{item.title}
+                            else
+                                li
+                                    a(href=website+'javascript:') 暂无数据
+                    else
+                        li
+                            a(href='javascript:') 暂无数据
+            a(href=website+'/xxpl/tzgg/').more
+                i.ico.ico-ellipsis
+        //活动展示
+        ul.list_unstyled.list_activity
+            if has.activityVOS
+                - var activityVOS=indexInfo.activityVOS
+                each item,i in activityVOS
+                    li(class='activity_item#{i+1}')
+                        if item.name&&item.onlineTime&&item.offlineTime&&item.code
+                            span.font30 #{item.name}
+                            p #{item.onlineTime} — #{item.offlineTime}
+                            a.btn.btn-default(href=(item.url?website+item.url:'javascript:;'),target='_blank') #{item.url?'我要参加':'敬请期待'}
+                        else
+                            span.font30 暂无数据
+                            p &nbsp;
+                            a.btn.btn-default(href='javascript:') 我要参加
+            else
+                - for(var i=0;i<3;i++)
+                li(class='activity_item#{i+1}')
+                    span.font30 暂无数据
+                    p &nbsp;
+                    a.btn.btn-default(href='javascript:') 我要参加
+            li.activity_item4
+                div.font30 更多活动
+                a.color-white(href=website+'/activity',target='_blank') 点击查看详情
+
+        //票据贷
+        .product_regular.product_regular_hot
+            aside.content.content_box3
+                p
+                    strong 票据贷
+                div 千元起投
+                .pad-top-5  一次性还本付息
+                span.hot 票
+                a(href=website+'/piaojudai/' style='margin-top:45px;').btn_white 查看更多
+            dl
+                dt.title
+                    ul.list-unstyled.row
+                        li.col-20 项目
+                        li.col-25 借款利率
+                        li.col-10 借款期限
+                        li.col-15 借款金额
+                        li.col-10 进度
+                        li.col-20 操作/状态
+                dd.body.color-gray
+                    if has.productGroupVOS
+                        - var productVOList=indexInfo.productGroupVOS[1].productVOList
+                        each item in productVOList
+                            .clearfix
+                                - var pid=item.id;
+                                    if item.name && item.annualRate && item.amount && item.tenderStatus && pid
+                                        ul.list-unstyled.row
+                                            li.col-20 #{item.name.substring(0,10)}
+                                            li.col-25.color-red
+                                                strong #{item.annualRate}%
+                                            li.col-10 #{item.timeLimit}天
+                                            li.col-15 #{item.amount}万
+                                            li.col-10
+                                                .circle
+                                                    img(src=website+'/images/index/circle/' + (Math.round(item.rate / 5) * 5) + '.png')
+                                                    span #{Math.round(item.rate)}%
+                                            li.col-20
+                                                a(href=website+'/piaojudai/' + pid + '.html',target='_blank',class=item.rate=='100'?'disabled':'',id=pid).btn_default #{item.tenderStatus==='募集中'?'立即投资':item.tenderStatus}
+                                    else
+                                        ul.list-unstyled.row 暂无数据
+                        else
+                            div.list-unstyled(style='height:234px;line-height:234px')  暂无数据
+        //出口jlkj税
+        .product_regular.product_regular_hot
+            aside.content.content_box1
+                p
+                    strong 退税贷
+                div(style='letter-spacing:7px;padding-left:7px;') 百元起投
+                .pad-top-5 期限灵活
+                span.hot 税
+                a(href=website + '/tuishuidai/' style='margin-top:45px;').btn_white 查看更多
+            dl
+                dt.title
+                    ul.list-unstyled.row
+                        li.col-20 项目
+                        li.col-25 借款利率
+                        li.col-10 借款期限
+                        li.col-15 借款金额
+                        li.col-10 进度
+                        li.col-20 操作/状态
+                dd.body.color-gray
+                    if has.productGroupVOS
+                        - var productVOList=indexInfo.productGroupVOS[2].productVOList
+                        each item in productVOList
+                            .clearfix
+                                - var pid=item.id;
+                                    if item.name && item.annualRate && item.amount && item.tenderStatus && pid
+                                        ul.list-unstyled.row
+                                            li.col-20 #{item.name.substring(0, 10)}
+                                            li.col-25.color-red
+                                                strong #{item.annualRate}%
+                                            li.col-10 #{item.timeLimit}天
+                                            li.col-15 #{item.amount}万
+                                            li.col-10
+                                                .circle
+                                                    img(src=website + '/images/index/circle/' + (Math.round(item.rate / 5) * 5) + '.png')
+                                                    span #{Math.round(item.rate)}%
+                                            li.col-20
+                                                a(href=website + '/tuishuidai/' + pid + '.html',target='_blank',class=item.rate == '100' ? 'disabled' : '',id=pid).btn_default #{item.tenderStatus === '募集中' ? '立即投资' : item.tenderStatus}
+                                    else
+                                        ul.list-unstyled.row 暂无数据
+                        else
+                            div.list-unstyled(style='height:234px;line-height:234px')  暂无数据
+        //公司动态&媒体报道
+        .list_news
+            .row
+                .col-50
+                    dl.company_news
+                        dt
+                            strong 公司动态
+                            a(href=website+'/xxpl/gsdt/',target='_blank').more 更多
+                        dd
+                            .carousel_wrapper#carousel02
+                                if has.companyNews
+                                    ul
+                                        - var companyNews=indexInfo.companyNews;
+                                        each item,i in companyNews
+                                            - var active=(i===0?'active':'')
+                                            li(class=active)
+                                                -var imgUrl=item.imageUrl
+                                                a(href=website+'/xxpl/gsdt/detail'+item.id,target='_blank')
+                                                    img(src=(imgUrl.indexOf('http')?imageHost:'')+imgUrl width='520' height='260')
+                                    p.dec #{companyNews[0].title}
+                                    .carousel_pagination
+                                        - for(var i=0;i<companyNews.length;i++)
+                                        if(i===0)
+                                            span.active
+                                        else
+                                            span
+                                        a(href='javascript:;').next
+                                        a(href='javascript:;').prev
+                                else
+                                    ul
+                                        li(class='active')
+                                            a(href='javascript:')
+                                                img(src='https://fms.jintoushou.com/upload/news/coverpicture/1705191634422522501412/1495182882258_1872130543935674524.jpg' width='520' height='260')
+
+                .col-50
+                    dl
+                        dt
+                            strong 媒体报道
+                            a(href=website+'/xxpl/mtbd/',target='_blank').more 更多
+                        dd
+                            ul
+                                if has.mediaReports
+                                    - var mediaReports=indexInfo.mediaReports;
+                                    each item,i in mediaReports
+                                        - var padTop=i===1?'padding-top:20px':'';
+                                        if item.imageUrl&&item.title&&item.summary
+                                            li.media(style=padTop)
+                                                -var imgUrl=item.imageUrl
+                                                .media_left
+                                                    a(href=website+'/xxpl/mtbd/detail'+item.id+'.html')
+                                                        img(src=(imgUrl.indexOf('http')?imageHost:'')+imgUrl width='177' height='120')
+                                                .media_body
+                                                    h4.media_heading
+                                                        -var ellipsis=(item.title.length>17)?'...':'';
+                                                        a(href=website+'/xxpl/mtbd/detail'+item.id+'.html') #{item.title.substr(0,17)}#{ellipsis}
+                                                    -var ellipsis=(item.summary.length>60)?'...':'';
+                                                    .color-gray.text-left #{item.summary.substr(0,60)}#{ellipsis}
+                                        else
+                                            li.media
+                                                .media_left
+                                                    a(href='javascript:',style='display:block;width:177px; height:120px;background:#B6B8D3;opacity: 0.17;')
+                                                .media_body.text-center.color-gray(style='padding-left:100px') 暂无数据
+                                else
+                                    li.media
+                                        .media_left
+                                            a(href='javascript:',style='display:block;width:177px; height:120px;background:#B6B8D3;opacity: 0.17;')
+                                        .media_body.text-center.color-gray(style='padding-left:100px') 暂无数据
+
+        //合作伙伴
+        dl.partner
+            dt
+                strong 合作伙伴
+                a(href='javascript:;').color-gray.pull-right 更多
+                dd
+                    - for(var i=1; i<10; i++)
+                        a(href=website+'/xxpl/hzhb/'+i,target='_blank',rel="nofollow")
+                            img(src=website+'/images/index/partner/partner0'+i+'.png')
+                dd.hidden
+                    - for(var j=10; j<21; j++)
+                        a(href=website+'/xxpl/hzhb/'+j,target='_blank',rel="nofollow")
+                            img(src=website+'/images/index/partner/partner' + j + '.png')
+        if !tel
+            //开启理财之路
+            .financial
+                p
+                    a(href=website+'/signup.html',rel="nofollow").btn_white 立即注册
+        //风险提示弹框
+        .layer_security_tips.hidden
+            p.text-indent.pad-top-10 根据2016年8月24日银监会发布的《网络借贷信息中介机构业务活动管理暂行办法》第十四条和第十五条的规定，参与网络借贷的出借人，应当具备投资风险意识、风险识别能力、拥有非保本类金融产品投资的经历并熟悉互联网。参与网络借贷的出借人应当履行下列义务:
+            ul
+                li 1.向网络借贷信息中介机构提供真实、准确、完整的身份等信息;
+                li 2.出借资金为来源合法的自有资金;
+                li 3.了解融资项目信贷风险，确认具有相应的风险认知和承受能力;
+                li 4.自行承担借贷产生的本息损失;
+                li 5.借贷合同及有关协议约定的其他义务。
+            p 以上，请您知悉，并确认。
+
+block script
+    include jslib/indexjs

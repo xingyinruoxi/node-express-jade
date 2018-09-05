@@ -1,0 +1,72 @@
+extend ../common
+block style
+    style.
+        .signup{
+            height: 859px;
+            background: url("../images/banner-register.jpg") repeat-x top center;
+        }
+block main
+    section.signup
+        .container
+            dl.dl-signup
+                dt
+                    span 欢迎注册
+                    a(href='signin.html') 已有账号? 立即登录
+                dd
+                    ul
+                        li.form-group
+                            input.form-control.mobilePhone(placeholder='手机号码',id='cellphone',type='text',maxlength=11,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                            div.form-error
+                        li.form-group.form-group-code-img
+                            div.clearfix
+                                input.form-control(placeholder='图片验证码',id='sendMsgVCode',type='text',maxlength=4)
+                                img.btn-code-img(src=website+"/images/def.png")
+                            div.form-error
+                        li.form-group.form-group-code-tel
+                            input.form-control(placeholder='手机验证码',id='msgVCode',type='text',maxlength=6,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                            a.btn-code-tel(href='javascript:;' id="getCellphoneVcode") 获取验证码
+                            div.form-error
+                        li.form-group
+                            input.form-control(placeholder='密码',id='password',type='password',class='password',maxlength=20,onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')")
+                            div.form-error
+                        li.security-level.hidden.text-center.hidden
+                            //- div.pad-bottom-10.color-gray 请设置6-20位数字及字母组合密码
+                            .row
+                                .col-33.low
+                                    span
+                                    |弱
+                                .col-33.middle
+                                    span
+                                    |中
+                                .col-33.hight
+                                    span
+                                    |高
+                        li.form-group
+                            input.form-control(placeholder='确认密码',id='repassword',type='password',class='repassword',maxlength=20,onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')")
+                            div.form-error
+                        a.inviter(href='javascript:;')
+                            div.pad-bottom-10.color-gray
+                                i.fa.fa-fw.fa-lg.fa-caret-right
+                                |我有推荐人(选填)
+                        li.form-group.inviter_input.hidden
+                            input.form-control(placeholder='推荐人手机号',id='inviter',type='text',maxlength=11,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                            div.form-error
+                    a.btn.btn-default(href='javascript:;' id='btn_signup') 立即注册
+                    input(type='hidden' id='signTicket' name='signTicket' value='#{signTicket}')
+                    input(type='hidden' id='signToken' name='signToken' value='#{signToken}')
+                    input(type='hidden' id='smsType'  value='regist')
+                    div.pad-top-10
+                        label.label_checkbox
+                            input(type='checkbox',id='checkRead')
+                            span.ico
+                            |我已阅读并同意
+                        a(href=website+'/xieyi.html',target='_blank') 《金投手用户注册协议》
+                        |和
+                        a(href=website+'/ysbmxy.html',target='_blank') 《用户隐私保密协议》
+                        p#agree &nbsp;
+                            i.fa.fa-exclamation-circle.fa-fw
+                            span.color-red 请同意《金投手用户注册协议》和《用户隐私保密协议》
+block script
+    include ../jslib/userSign/signupjs
+
+

@@ -1,0 +1,39 @@
+extend ../common
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    section#section
+        dl.dl_pannel_account
+            dt 邀请好友
+            dd.invitedfriends
+                .row.pad-top-40
+                    .col-55
+                        img#vcode(width='260')
+                        p 分享二维码给朋友，进行好友邀请
+                        p.pad-top-5 右键保存图片，分享给好友操作更便捷
+                    .col-40
+                        img(src='../images/account/invite-friends-5.png' style='margin-top:19px;padding-bottom:13px;')
+                        p 扫描二维码，下载APP
+                        p.pad-top-5 随时随地进行邀请
+            dd.important_tips.font14(style='margin-top:56px')
+                .pad-top-40 电脑操作，复制链接，分享给好友：
+                .row.pad-top-25
+                    .col-15.pad-top-10 链接:
+                    .col-70
+                        .invitedfriends_group #{website}/signup.html?invitePhoneNo=#{mobile}
+                            //input.form_control#Fcode(type='text',value='https://www.jintoushou.com/user/toRegisterPage',disabled)
+                    .col-15
+                        //a.btn.btn-default.invitedfriends_btn(href="javascript:window.clipboardData.setData('Text',document.getElementById('Fcode').value)") 复制邀请链接
+                        button.invitedfriends_btn(data-clipboard-action="copy" data-clipboard-target=".invitedfriends_group") 复制邀请链接
+            dd.important_tips(style='margin-top:50px')
+                strong 重要提示：
+                ul
+                    li 1、友情有益，和TA共攀财富高峰。
+                    li 2、好友注册即可获得160元红包和88888元特权本金。
+
+block script
+    include ../jslib/account/invitedfriendsjs

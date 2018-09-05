@@ -1,0 +1,35 @@
+extend common
+block style
+    style.
+        .cannot-find-tit{
+            font-size: 38px;
+            color: #ff7626;
+            padding-bottom: 50px;
+        }
+        .cannot-find-text{
+            width: 178px;
+            padding-top: 17px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .pad-bottom-50{padding-bottom: 50px}
+block main
+    .container
+        .row(style='padding-top:137px;padding-bottom:50px;')
+            .col-55.text-center
+                img(src=website+'/images/cannot-find-img.png')
+            .col-45
+                h3.cannot-find-tit 页面找不到了！！！
+                .row.color-gray
+                    .col-50
+                        img(src=website+'/images/cannot-find3.png' width='178')
+                        .cannot-find-text
+                            p.pad-bottom-50 关注微信
+                            a(href=website+'/')
+                                img(src=website+'/images/cannot-find1.png')
+                    .col-50
+                        img(src=website+'/images/cannot-find4.png' width='178')
+                        .cannot-find-text
+                            p.pad-bottom-50 APP下载
+                            a(href=website+'/onSaleingProduct/')
+                                img(src=website+'/images/cannot-find2.png')

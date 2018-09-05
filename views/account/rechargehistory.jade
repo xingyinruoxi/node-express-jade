@@ -1,0 +1,49 @@
+extend ../common
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    section#section
+        dl.dl_pannel_account(style='padding:0 12px')
+            dt
+                a(href="javascript :;" onClick="javascript :history.back(-1);")
+                    i.fa.fa-angle-left.pad-right-10
+                    |返回
+
+            dd(style='position:relative')
+
+                ul.nav_pills
+                    li.typeStatus 充值状态
+                    li.active
+                        a(href='javascript:;' value='') 全部
+                    li
+                        a(href='javascript:;' value='success') 成功
+                    li
+                        a(href='javascript:;' value='processing') 处理中
+                    li
+                        a(href='javascript:;' value='fail') 失败
+                    li(style='position:relative;float:right;padding-right:0px')
+                        span(style='display:inline-block;font-size:14px;padding-right:5px') 选择时间
+                        input#start.laydate-icon(style='width:220px;', type='text', placeholder='点击选择日期')
+                        i(style='display:inline-block;margin:0 3px;') -
+                        input#end.laydate-icon(style='width:220px;', type='text', placeholder='点击选择日期')
+                table.table(cellpadding='0',cellspacing='0')
+                    thead.thread
+                        tr
+                            th(width='260') 时间
+                            th 交易金额(元)
+                            th(width='260') 状态
+                    tbody.text-center.trlist
+                        tr
+                            td 2017-12-12&emsp;12:12:12
+                            td 20.00
+                            td 失败
+
+                .pagination.hidden
+            input(type='hidden' id='signTicket' name='signTicket' value='#{signTicket}')
+            input(type='hidden' id='signToken' name='signToken' value='#{signToken}')
+block script
+    include ../jslib/account/rechargehistoryjs

@@ -1,0 +1,285 @@
+@charset "utf-8";
+@import "base.less";
+//活动中心
+.activity_banner{
+  height: 504px;
+  background: url("../images/activity/activity-center.jpg") center no-repeat;
+}
+.activity_center {
+    .bg-white;
+    .activity_center_title {
+        @h: 70px;
+        margin-bottom: 40px;
+        .txt-ver(@h);
+        font-size: 22px;
+        background: #f8f9fa;
+        text-indent: 40px;
+    }
+    .hot_active{
+        .activity_list_item {
+            margin: 0px 15px 40px 15px;
+            width: 348px;
+            background: #f8f9fa;
+            float: left;
+            img{
+                width: 348px;
+                height: 244px;
+            }
+            div {
+                .border-bottom;
+                .text-center;
+                .pad-top-30;
+                font-size: 18px;
+                time {
+                    display: block;
+                    .pad-bottom-30;
+                }
+            }
+            .descrip {
+                height: 78px;
+                padding: 18px 16px;
+                border-bottom: 0;
+                p {
+                    font-size: 16px;
+                    height: 78px;
+                    .color-gray;
+                    overflow: hidden;
+                    word-wrap: break-word;
+                }
+            }
+            a {
+                @h: 48px;
+                .txt-ver(@h);
+                .font24;
+            }
+        }
+        .def {
+            height: 312px;
+            line-height: 312px;
+            margin-top: 20px;
+            background-color: #fff;
+            text-align: center;
+            font-size: 16px;
+            color: #9595AA;
+        }
+    }
+
+}
+/*满标有礼*/
+.font16{
+  font-size:16px;
+}
+.activity_mark_banner{
+  height:559px;
+  background: url("../images/activity/activity_mark1.jpg") center no-repeat;
+}
+.activity_mark1{
+  height: 639px;
+  background: url("../images/activity/activity_mark2.jpg") center no-repeat;
+  .activity_mark{
+    width:1041px;
+    height:442px;
+    margin:0 auto;
+    padding-top:104px;
+    .text-center;
+    h3{
+      font-size:30px;
+      color:#386dd9;
+      margin:30px auto 227px;
+    }
+    p{
+      color:#9595aa;
+      line-height:30px;
+      .font18;
+    }
+    .activity_mark_btn{
+      width:213px;
+      height:86px;
+      margin:10px auto;
+      background: url("../images/activity/activity_markbtn.png");
+      a{
+        height:42px;
+        line-height:42px;
+        width:156px;
+        margin:0 auto;
+        display:block;
+        top:16px;
+        .font16;
+        .pos(r);
+        .color-white;
+        .text-center;
+      }
+    }
+  }
+}
+.activity_rules{
+  width:826px;
+  border:2px solid #fff;
+  border-radius:5px;
+  margin:0 auto;
+  line-height:32px;
+  .font18;
+  .color-white;
+  h4{
+    font-size:30px;
+    width:219px;
+    height:50px;
+    line-height:50px;
+    background:#e74360;
+    box-shadow: 0 10px 10px #212855;
+    border-radius:25px;
+    margin:-25px auto 0;
+    .text-center;
+  }
+}
+.activity_mark2{
+  height: 311px;
+  background: url("../images/activity/activity_mark3.jpg") center no-repeat;
+  .activity_rules1{
+    height:136px;
+    top:132px;
+    .pos(r);
+    p{
+      padding-left:150px;
+    }
+  }
+}
+.activity_mark3{
+  height:605px;
+  background: url("../images/activity/activity_mark4.jpg") center no-repeat;
+  .activity_rules2{
+    height:400px;
+    top:65px;
+    .pos(r);
+    ol{
+      padding-left:143px;
+      padding-top:43px;
+      a{
+        .color-white;
+      }
+    }
+  }
+}
+
+/*新手活动引导页*/
+.activityguide_btn{
+  padding:15px 50px;
+  background:#2e56a1;
+  color:#fff;
+  font-size:22px;
+  border-radius:3px;
+  .text-center;
+}
+.activityguide1{
+  background: url("../images/activity/activityguide1.jpg") center no-repeat;
+  height:725px;
+}
+.activityguide2{
+  background: url("../images/activity/activityguide2.jpg") center no-repeat;
+  height:712px;
+
+}
+.activityguide_bg{
+  height:425px;
+  width:1180px;
+  margin:0 auto;
+  color:#ceaa70;
+  .activityguide_right{
+    width:407px;
+    height:311px;
+    margin:84px 113px 0 0;
+
+    .pull-right;
+    .text-center;
+    h4{
+      font-size:36px;
+      font-weight:bold;
+      margin:56px auto 34px;
+    }
+    p{
+      font-size:46px;
+    }
+  }
+  .activityguide_left{
+    width:407px;
+    height:311px;
+    margin:84px  0 0 117px;
+    .pull-left;
+    .text-center;
+    h4{
+      font-size:36px;
+      font-weight:bold;
+      margin:56px auto 34px;
+    }
+    p{
+      font-size:46px;
+    }
+  }
+}
+//未注册
+.activityguide_bg1,.activityguide_bg3,.activityguide_bg5{
+  p{
+    line-height:80px;
+    height:80px;
+    margin-bottom:35px;
+  }
+  b{
+    font-size:58px;
+  }
+}
+.activityguide_bg1{
+  background: url("../images/activity/activityguide6.png");
+
+}
+.activityguide_bg3{
+  background: url("../images/activity/activityguide7.png");
+}
+.activityguide_bg5{
+  background: url("../images/activity/activityguide8.png");
+}
+//已注册
+.activityguide_bg2,.activityguide_bg4,.activityguide_bg6{
+  p{
+    line-height:56px;
+  }
+}
+.activityguide_bg2{
+  background: url("../images/activity/activityguide9.png");
+  p{
+    width:300px;
+    margin:0 auto;
+  }
+}
+
+.activityguide_bg4{
+  background: url("../images/activity/activityguide10.png");
+}
+.activityguide_bg6{
+  background: url("../images/activity/activityguide11.png");
+}
+.activityguide3{
+  background: url("../images/activity/activityguide3.jpg") center no-repeat;
+  height:711px;
+}
+.activityguide4{
+  background: url("../images/activity/activityguide4.jpg") center no-repeat;
+  height:715px;
+}
+.activityguide5{
+  background: url("../images/activity/activityguide5.jpg") center no-repeat;
+  height:500px;
+  div {
+    width:1200px;
+    margin: 0 auto;
+    ol {
+      color: #2e56a1;
+      font-size: 24px;
+      line-height: 40px;
+      padding:50px 0 50px 50px;
+      h5 {
+        font-size: 30px;
+        padding:10px 0 20px 20px;
+      }
+    }
+  }
+}

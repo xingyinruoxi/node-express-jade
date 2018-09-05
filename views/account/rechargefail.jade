@@ -1,0 +1,14 @@
+extend ../common
+block position
+    - var position=true
+block main
+    section.container.bg-white
+        .rechargeResult
+            div
+                i.ico.ico_fail
+            span.title 对不起，充值失败！
+            p.resultMsg
+            a.btn.btn-default(href=website+'/help/') 帮助中心
+            a.btn.btn-default.btn-solid(href=website+'/user/recharge.html') 继续充值
+block script
+    include ../jslib/account/rechargefailjs

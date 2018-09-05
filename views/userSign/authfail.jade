@@ -1,0 +1,11 @@
+extend ../common
+block main
+    div.mar-top-20 &nbsp;
+    section.container.bg-white
+        .signupSuccess
+            i.ico.ico_fail
+            h4 #{curUrlTitle}
+            p 系统繁忙，请稍后重试！
+            a.btn.btn-default(href='#{failhref}') 返回#{failname}
+block script
+    include ../jslib/otherjs

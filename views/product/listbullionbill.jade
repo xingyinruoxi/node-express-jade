@@ -1,0 +1,71 @@
+extends ../common
+block position
+    - var position=false
+block main
+    //- banner jo
+    div.banner
+        a.btn(rel='nofollow' href='javascript:;') 立即投资
+    //- 产品特色 jo
+    section.container(style="margin-top: -24px;")
+        div.product-feature
+            div.bg-shadow
+            div.row
+                div.col-25
+                    div.icon
+                        img(src=website+'/images/index/icon05.png')
+                        span 银行承兑
+                div.col-25
+                    div.icon
+                        img(src=website+'/images/index/icon03.png')
+                        span 安全保障
+                div.col-25
+                    div.icon
+                        img(src=website+'/images/index/icon06.png')
+                        span 期限灵活
+                div.col-25.no-line
+                    div.icon
+                        img(src=website+'/images/index/icon04.png')
+                        span 收益稳盈
+
+    section.container.product(style="margin-top: -24px;")
+        //- 产品列表
+        ul.product_list.product-list.clearfix
+            - for(i=0;i<15;i++)
+                 if (i%4==0)
+                     li.product_item(style='margin-left:0').clearfix
+                         dl
+                             dt 金银票第083期
+                             dd
+                                 .percent 7.00%
+                                 .row.color-gray
+                                     .col-50
+                                         p 投资期限
+                                             span 27天
+                                     .col-50
+                                         p 规模
+                                             span 19.80万
+                                 .progress
+                                     .progress_bar(style='width:100%')
+                                 a.btn.btn-default(href='#') 已满标
+                 else
+                    li.product_item.clearfix
+                        dl
+                            dt 金银票第083期
+                            dd
+                                .percent 7.00%
+                                .row.color-gray
+                                    .col-50
+                                        p 投资期限
+                                            span 27天
+                                    .col-50
+                                        p 规模
+                                            span 19.80万
+                                .progress
+                                    .progress_bar(style='width:100%')
+                                a.btn.btn-default(href='#') 已满标
+
+        //- 分页 jo
+        .pagination
+
+block script
+    include ../jslib/product/listbullionbilljs

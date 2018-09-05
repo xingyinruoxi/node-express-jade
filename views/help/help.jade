@@ -1,0 +1,127 @@
+extend ../common
+block main
+    section.help_banner
+    //一对一服务
+    div.help_assist#one-to-one
+        dl.guide
+            dt.list_tit 一对一服务
+                span 工作日 9:00-21:00 ; 非工作日 9:00-18:00
+            dd.help_pl64
+                div.serve
+                    a.des_img(href="javascript:;",style="background-Position:-8px -6px")
+                    div.des_left
+                        h3 热线电话
+                        p 400-101-7660
+                div.oneline
+                div.serve
+                    a.des_img(href="javascript:;",style="background-Position:-89px -6px")
+                    div.des_left
+                        h3(style="display:inline-block;margin-right:45px") 在线客服
+                        a.consult_color(href='http://www.sobot.com/chat/pc/index.html?sysNum=700b7ec5c8884e6fbc16baedf679ceca',target="_blank",rel="nofollow") 点此咨询
+                        p 在此解答您的咨询、高效、便捷
+                div.oneline
+                div.serve
+                    a.des_img(href="javascript:;",style="background-Position:-167px -6px")
+                    div.des_left
+                        h3 邮件留言
+                        p kf@jtoushou.com
+    //热门问题
+    dl.help_assist#hot-quest
+        dt.list_tit 热门问题
+            div.help_link
+                a.more(href=website+'/help/rmwt/') 查看更多
+        dd.hot_problem
+            //.def 暂无数据
+            //div.col-33
+                ul
+                    li
+                        a(href='javascript:;') Q： 平台对定期产品保本保息吗？
+                    li
+                        a(href='javascript:;') Q： 红包可以直接用来出借吗？
+                    li
+                        a(href='javascript:;') Q： 出借之后我的钱借给谁了？
+                    li
+                        a(href='javascript:;') Q： 出借项目何时开始计息？怎么还款？
+                    li
+                        a(href='javascript:;') Q： 如何获取更多金投手的信息？
+            //div.col-33
+                ul
+                    li
+                        a(href='javascript:;') Q： 金投手如何保障资金安全？
+                    li
+                        a(href='javascript:;') Q： 如何获取特权本金？
+                    li
+                        a(href='javascript:;') Q： 什么是特权本金？
+                    li
+                        a(href='javascript:;') Q： 如何查看我的出借详情？
+                    li
+                        a(href='javascript:;') Q： 提现手续费怎么收？
+
+            //div.col-33
+                ul
+                    li
+                        a(href='javascript:;') Q： 怎么操作出借项目？
+                    li
+                        a(href='javascript:;') Q： 已经完成充值，应该如何进行出借？
+                    li
+                        a(href='javascript:;') Q： 如何进行提现？
+                    li
+                        a(href='javascript:;') Q： 如何注册成为金投手用户？
+                    li
+                        a(href='javascript:;') Q： 金投手是什么公司？
+    //理财产品介绍
+    dl.help_assist#product-inc
+        dt.list_tit 如何投资
+        dd.introduce.row
+            div.intro_single
+                if result && result.mixMobile
+                    a.des1( href=website+"/",target="_blank")
+                else
+                    a.des1(href=website+"/signup.html",target="_blank")
+                span 注册
+            .introduce_arrows
+                i
+            div.intro_single.intro_bank
+                a.des2( href=website+"/user/bankaccountinfo.html",target="_blank")
+                span 开通存款账户
+            .introduce_arrows
+                i
+            div.intro_single
+                a.des3( href=website+"/user/securitysetup.html",target="_blank")
+                span 风险测评
+            .introduce_arrows
+                i
+            div.intro_single
+                if !result
+                    a.des4(href=website+"/signin.html",target="_blank")
+                else if result && !result.bindSerialNo
+                    a.des4(href=website+"/user/bankaccountinfo.html",target="_blank")
+                else if result.bindSerialNo && (!result.ecardType)
+                    a.des4(href=website+"/user/recharge.html",target="_blank")
+                else if result.bindSerialNo && result.ecardType
+                    a.des4(href=website+"/user/zhzl/",target="_blank")
+
+                span 充值
+                div.grayword
+                    |（非浙商）
+            .introduce_arrows
+                i
+            div.intro_single
+                a.des5(href=website+"/onSaleingProduct/",target="_blank")
+                span 出借
+    //常见问题分类
+    dl.help_assist
+        dt.list_tit 常见问题分类
+        dd.row.problem
+            div &nbsp;
+            if helpType == '暂无数据'
+                .def 暂无数据
+            else
+                -var items=helpType;
+                each item , index in items
+                    div.help_type(tid=item.id)
+                        a.help_icon(href=website+"/help/rmwt")
+                            img(src=item.picUrl)
+                        span #{item.name}
+block script
+    include ../jslib/help/helpjs

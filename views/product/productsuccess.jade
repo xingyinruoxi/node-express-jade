@@ -1,0 +1,36 @@
+extend ../common
+block position
+    - var position=true
+block main
+    section.container.bg-white
+        .rechargeResult.proResult
+            div
+                i.ico.ico_success
+            span.title 恭喜您购买成功！
+            table.table(cellpadding='0',cellspacing='0',style='width:800px;margin:0 auto 40px;')
+                thead
+                    th 产品名称
+                    th 出借金额(元)
+                    th 收益率
+                    th 出借期限
+                    th 状态
+                tbody.text-center
+                    tr
+            a.btn.btn-default(href=website+'/onSaleingProduct/') 继续投资
+            a.btn.btn-default.btn-solid(href=website+'/user/dealhistory.html?type=0') 交易记录
+        .pro_code
+            .code_line
+            .code_detail
+                img.codeImg(src=website + '/images/product/pro_success_code.jpg')
+
+                .codeDescribe
+                    p 扫一扫&nbsp关注金投手微信公众号
+                    p
+                        //span 即可领取
+                        //span.txtColo 5%
+                        //span 加息卷
+                        span 这个公众号，特别会赚钱
+
+
+block script
+    include ../jslib/product/productsuccessjs

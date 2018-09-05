@@ -1,0 +1,22 @@
+{
+  "apps":{
+    "name":"JinTouShouWebApp",
+    "cwd": "/home/work/data/webapps/jts-www",   //线上环境配置
+    "script": "./bin/www",
+    "min_uptime": "60s",
+    "max_restarts": 30,
+    "max_memory_restart": "1024M",
+    "instances"  : "max",
+    "exec_mode" : "cluster",
+    "error_file" : "/home/work/logs/pm2/pm2-err.log",
+    "out_file": "/home/work/logs/pm2/pm2-out.log",
+    "pid_file": "/home/work/logs/pm2/JinTouShouWebApp.pid",
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "log_date_format":"YYYY-MM-DD HH:mm Z",
+    "combine_logs":true,
+    "merge_logs":true,
+    "watch": true
+  }
+}

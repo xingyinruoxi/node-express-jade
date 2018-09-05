@@ -1,0 +1,19 @@
+extend ../common
+block main
+    div.mar-top-20 &nbsp;
+    section.container.bg-white
+        .signupSuccess
+            i.ico.ico_success
+            h4 恭喜您注册成功
+            p.hidden#registerAmount.font16.pad-top-10 您已获得
+                span
+                |元红包
+            p.hidden#openAccountAmount 继续完成开户，可继续获得
+                span
+                |元红包
+            p.hidden
+                span#time 3
+                | 秒钟自动跳转到开通存管账户页面
+            a.btn.btn-default(href='../user/bankaccountinfo.html') 开通存管账户
+block script
+    include ../jslib/userSign/signupSuccessjs

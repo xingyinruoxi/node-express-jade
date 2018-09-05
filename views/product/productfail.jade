@@ -1,0 +1,23 @@
+extend ../common
+block position
+    - var position=true
+block main
+    section.container.bg-white
+        .rechargeResult.proResult
+            div
+                i.ico.ico_fail
+            span.title 对不起，购买遇到问题!
+            p.resultMsg 银行反馈对应结果
+            a.btn.btn-default(href=website+'/onSaleingProduct/') 继续投资
+        .pro_code
+            .code_line
+            .code_detail
+                img.codeImg
+                .codeDescribe
+                    p 扫一扫&nbsp关注金投手微信公众号
+                    p
+                        span 即可领取
+                        span.txtColo 5%
+                        span 加息卷
+block script
+    include ../jslib/account/rechargefailjs

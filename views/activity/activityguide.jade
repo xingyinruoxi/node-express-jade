@@ -1,0 +1,74 @@
+extend ../common
+block style
+    style.
+        #footer{margin-top:0}
+block main
+    .activityguide1
+    .activityguide2
+        div(style='padding-top:101px;')
+        //未注册
+        .activityguide_bg.activityguide_bg1.hidden
+            .activityguide_right
+                h4 完成注册
+                p 领取
+                    b 666
+                    |红包
+                a.activityguide_btn(href='#') 立即注册
+
+        //已注册
+        .activityguide_bg.activityguide_bg2
+            .activityguide_right
+                h4 热烈欢迎
+                p 资深用户开启存管之旅
+    .activityguide3
+        div(style='padding-top:101px;')
+            //未注册
+            .activityguide_bg.activityguide_bg3.hidden
+                .activityguide_left
+                    h4 开通银行存管账户
+                    p 领取
+                        b 1000
+                        |红包
+                    a.activityguide_btn(href='#') 开通存管账户
+
+            //已注册
+            .activityguide_bg.activityguide_bg4
+                .activityguide_left(style='margin-left:68px;')
+                    h4 银行存管账户开通成功
+                    p 领取
+                        b 1000
+                        | 红包
+    .activityguide4
+        div(style='padding-top:101px;')
+            //未注册
+            .activityguide_bg.activityguide_bg5.hidden
+                .activityguide_right
+                    h4 首次充值
+                    p 冲
+                        b 1000
+                        | 送
+                        b 100
+                    a.activityguide_btn(href='#') 立即充值
+                    .font18.pad-top-20 最高可拿1000元红包
+
+            //已注册
+            .activityguide_bg.activityguide_bg6
+                .activityguide_right
+                    h4 首次充值
+                    p 领取***红包
+
+
+    .activityguide5
+        div
+            ol
+                li
+                    h5 活动说明：
+                li 1. 活动时间：自2017年8月1日起，结束日期以公告为准；
+                li 2. 首次充值成功，充1000元送100元红包，充10000元送1000元红包，充50000元及以上送10000元红包；
+                li 3. 红包使用规则以“我的账户-我的奖励”中红包使用说明为准；
+                li 4. 本活动最终解释权归金投手所有，如有疑问，欢迎致电金投手客服中心400-101-7660。
+
+block script
+    include ../jslib/activity/activityguidejs
+
+

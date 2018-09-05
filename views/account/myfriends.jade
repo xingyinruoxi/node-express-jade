@@ -1,0 +1,35 @@
+extend ../common
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    section#section
+
+        dl.dl_pannel_account(style='padding:0 12px')
+            dt 我的好友
+
+            dt(style='color:#9595aa') 好友数量:
+                    span#friendsNum
+                    | 名
+
+            dd
+
+                table.table(cellpadding='0',cellspacing='0')
+                    thead#myFriendsHead
+                        th 好友账户
+                        th 注册日期
+                        th#whetherpay
+                    if (isEmployee.isEmployer=='true')
+                        tbody.text-center#myFriendsBody
+                            tr.defa
+                                td(colspan='2') 暂无数据
+                    else
+                        tbody.text-center#myFriendsBodyF
+                            //tr.defa
+                                td(colspan='2') 暂无数据
+                .pagination.hidden
+block script
+    include ../jslib/account/myfriendsjs

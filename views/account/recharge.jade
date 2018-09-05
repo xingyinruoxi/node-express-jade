@@ -1,0 +1,65 @@
+extend ../common
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    section#section
+        -var checkBindSerialNo=rechargeInfo.bindSerialNo
+        dl.dl_pannel_account.dl_bankAcountInfo(class=checkBindSerialNo?'':'active')
+            dt 我要充值
+                a.pull-right.font14.color-gray(href=website+'/user/rechargehistory.html?type=1') 查看充值记录
+            dd
+                .pad-top-15.pad-bottom-10 充值银行卡
+                if checkBindSerialNo
+                    .card_bank_box
+                        .card_bank
+                            .content
+                                div.text-left
+                                    img(src=website+'/images/banks/YH'+rechargeInfo.bankcode+'.png',width='144')
+                                div.num
+                                    span .... &nbsp; ....&nbsp; ....&emsp;
+                                    | #{rechargeInfo.bankCard}
+                            footer 支付限额：单笔
+                                span#quotaSingle #{rechargeInfo.quotaSingle}
+                                |万，单日#{rechargeInfo.quotaDaily}万
+                else
+                    a(href=website+'/user/bankaccountinfo.html')
+                        .card_bank_none 暂未开通存账户，去开户
+                ul.form_vertical(style='left: -42px;')
+                    li.form-group(style='margin-left:36px')
+                        label(style='width:132px') 银行存管账户金额：
+                        .form-control
+                            span#accountBalance #{rechargeInfo.accountBalance}
+                            |元
+                    li.form-group
+                        label 充值金额：
+                        input.form-control#rechargeAmount(placeholder='输入充值金额',name='rechargeAmount',onkeyup="value=value.replace(/[^\\d\.]/g,'')")
+                        .input_group_addon 元
+                        .form-error
+                        p(style='width:500px;margin-top:9px;') 充值后银行存管账户余额：
+                            sapn#rechargedAccountBalance #{rechargeInfo.accountBalance}
+                            |元
+                    li.form-group(style='width:150px;margin-top:25px;')
+                        label 手机验证码：
+                        input.form-control#rechargeVcode(placeholder='输入手机验证码',name='vcode')
+                        a.btn.btn_send_code(href='javascript:;') 获取验证码
+                        .form-error
+                        p.pad-top-5.color-red(style='width:400px;margin-left:-84px;padding-top:9px;')
+                            i.fa.fa-exclamation-circle.color-gray.fa-fw
+                            |银行将向您的银行卡预留手机号#{rechargeInfo.mobile}发送验证码
+                    p.hidden.text-center.color-red#rechargeNum 您今天已充值10笔，请明天再来
+                    a.btn.btn-default#btn_recharge(href='javascript:;',style='width:260px;',class=rechargeLimit<=0?'disabled':'') 确认充值
+            dd.important_tips
+                strong 温馨提示：
+                ul
+                    li 1. 每日最多充值10笔；
+                    li 2. 金投手平台严禁信用卡套现、转账及利用充值功能进行洗钱等行为，一经发现将予以处罚（包括但不限于：限制收款、冻结账户、永久停止服务）。
+                    li 3. 充值过程中遇到问题，请联系客服400-101-7660。
+        input(type='hidden' id='signTicket' name='signTicket' value='#{signTicket}')
+        input(type='hidden' id='signToken' name='signToken' value='#{signToken}')
+
+block script
+    include ../jslib/account/rechargejs

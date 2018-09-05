@@ -1,0 +1,97 @@
+extend ../common
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    section#section
+
+        dl.dl_pannel_account(style='padding:0 12px')
+            dt 我的项目
+            ul.nav_pills.payment1(style='padding-left:15px')
+                li.active
+                     a(href='javascript:;') 已投项目
+                li
+                     a(href='javascript:;') 还款计划
+
+            dd(style='position:relative')
+                ul.nav_pills.payment2#para1
+                    li.active
+                        a(href='javascript:;') 募集中
+                    li
+                        a(href='javascript:;') 还款中
+                    li
+                        a(href='javascript:;') 已结清
+
+                div#timebox(style='position:absolute;top:14px;right:14px;padding-right:0px;display:block;z-index: 7;')
+                        span(style='display:inline-block;font-size:14px;padding-right:5px') 选择时间
+                        input#start.laydate-icon(style='width:220px;', type='text', placeholder='点击选择日期')
+                        i(style='display:inline-block;margin:0 3px;') -
+                        input#end.laydate-icon(style='width:220px;', type='text', placeholder='点击选择日期')
+                div.nav_pills.payment2#para2(style='position:relative')
+                    //br
+                    p.pad-top-20(style='line-height:16px')
+                        span 本金总计(元)：
+                        span#sumAmount(style='padding-right:16px')
+                        span 利息总计(元)：
+                        span#sumCoupon
+                    ul
+                        li.active
+                            a(href='javascript:;') 全部
+                        li
+                            a(href='javascript:;') 已还款
+                        li
+                            a(href='javascript:;') 待还款
+
+
+                table.table#table(cellpadding='0',cellspacing='0')
+                        thead.thread#thead1
+                            tr
+                                th(width='120') 项目名称
+                                th(width='140') 已投本金(元)
+                                th(width='140') 年化收益+加息收益
+                                th(width='130') 出借期限
+                                th(width='120') 还款方式
+                                th(width='118') 起息日期
+                                th 操作
+                        thead.thread#thead2
+                            tr
+                                th(width='120') 项目名称
+                                th(width='146') 已投本金(元)
+                                th(width='131') 已还金额(元)
+                                th(width='124') 待还金额(元)
+                                th(width='140') 还款方式
+                                th(width='102') 到期日期
+                                th(colspan='118') 操作
+                        thead.thread#thead3
+                            tr
+                                th(width='152') 项目名称
+                                th(width='150') 已投本金(元)
+                                th(width='150') 结清金额(元)
+                                th(width='150') 结清日期
+                                th(width='138') 结清方式
+                                th 操作
+                        thead.thread#thread4
+                            th(width='160') 回款日期
+                            th(width='160') 项目名称
+                            th(width='160') 应回本息
+                            th(width='160') 状态
+                        tbody.text-center
+
+                            tr
+                                td(colspan='5').font16
+                                    p.pad-top-30.pad-bottom-30 暂无数据
+
+                    table.table(cellpadding='0',cellspacing='0')
+
+                        tbody.trlist.text-center
+
+                            tr.nodata
+                                td(colspan='5').font16
+                                        p.pad-top-30.pad-bottom-30 暂无数据
+                .pagination.hidden
+block script
+    include ../jslib/account/myrepaymentjs
+

@@ -1,0 +1,112 @@
+extend ../common
+block main
+block position
+    - var position=true
+block leftnav
+    -var leftnav=true
+block right_help
+    .right_xxpl
+        h3 运营数据
+        .datum
+            div.title
+                | 平台运营数据总览
+                span 数据截止日期：2017-06-30
+            .listsj
+                dl
+                    dt 交易总额（单位：万元）
+                    dd 190227.88
+                dl
+                    dt 交易总笔数（单位：次）
+                    dd 136844
+                dl.width218
+                    dt 上线项目数量
+                    dd 3063
+            .listsj
+                dl
+                    dt 已偿还本金（单位：万元）
+                    dd 153095.83
+                dl
+                    dt 已发放借款利息（单位：万元）
+                    dd 2236.216
+                dl.width218
+                    dt 代偿金额（单位：万元）
+                    dd 37132.05
+            div.title
+                | 平台总交易额/年
+            div.pic.text-center
+                dl.dl_dropdown
+                    dt
+                        span 2017
+                        i.fa.caret.fa-caret-down
+                    dd
+                        ul#selection(onchange='show()')
+                            li.one 2017
+                            li.tow 2016
+                img.img1(src='../images/aboutus/xxpl01.jpg')
+                img.img2(src='../images/aboutus/xxpl04.jpg')
+            div.title
+                | 平台兑付数据
+            p 截止至目前，平台已到期兑付定期项目XXXX个，均已实现完美兑付。
+            .listsj
+                dl
+                    dt 逾期金额
+                    dd 0
+                dl
+                    dt 金额逾期率（%）
+                    dd 0
+                dl.width218
+                    dt 项目分级逾期率（%）
+                    dd 0
+            .listsj
+                dl
+                    dt 逾期项目数
+                    dd 0
+                dl
+                    dt 项目逾期率（%）
+                    dd 0
+                dl.width218
+                    dt 金额分级逾期率（%）
+                    dd 0
+            .listsj
+                dl
+                    dt 历史项目逾期金额
+                    dd 0
+                dl
+                    dt 累计逾期代偿金额
+                    dd 0
+            .listsj
+                dl
+                    dt 历史项目逾期率（%）
+                    dd 0
+                dl
+                    dt 累计逾期代偿笔数
+                    dd 0
+            div.title
+                | 平台用户数据
+            .listsj
+                dl
+                    dt 注册人数
+                    dd 224388
+                dl
+                    dt 出借人总数
+                    dd 56720
+                dl.width218
+                    dt 借款人总数
+                    dd 136
+            .listsj
+                dl
+                    dt 人均累计出借金额
+                    dd 3.35
+                dl
+                    dt 笔数借款金额
+                    dd 1.39
+            div.title
+                | 出借平台分布
+            div.pic.text-center
+                img(src='../images/aboutus/xxpl02.jpg')
+            div.title
+                | 借款产品周期
+            div.pic.text-center
+                img(src='../images/aboutus/xxpl03.jpg')
+block script
+    include ../jslib/aboutus/yysjjs

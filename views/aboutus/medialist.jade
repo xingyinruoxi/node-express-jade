@@ -1,0 +1,14 @@
+extend ../common
+block main
+block position
+    - var position=true
+block leftnav
+    -var leftnav=true
+block right_help
+    .right_xxpl
+        h3 媒体报道
+        ul#newsList
+        .pagination
+    input(id='imageHost',type='hidden',value=imageHost)
+block script
+    include ../jslib/aboutus/medialistjs

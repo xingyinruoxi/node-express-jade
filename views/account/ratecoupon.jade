@@ -1,0 +1,47 @@
+extend ../common
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    input#activityRules(type='hidden',value=activityRules)
+    section#section
+        dl.dl_pannel_account
+            dt 加息券
+            dd.text-center
+                .row.font16.pad-top-40.pad-bottom-40
+                    div.col-25 奖励加息券数(张)
+                        p#totalAmount
+                    div.col-25 已使用加息券数(张)
+                        p#useAmount
+                    div.col-25 加息券收益金额(元)
+                        p#earnAmount
+                    div.col-25 已过期的加息券数(张)
+                        p#loseAmount
+
+        dl.dl_pannel_account
+            dt 加息券详情
+            dd
+                ul.nav_pills#redpacketType
+                    li.active
+                        a(href='javascript:;') 全部
+                    li
+                        a(href='javascript:;') 可使用
+                    li
+                        a(href='javascript:;') 已过期
+                    li
+                        a(href='javascript:;') 已使用
+                table.table(cellpadding='0',cellspacing='0')
+                    thead
+                        th(width='100') 加息率(％)
+                        th(width='100') 来源
+                        th(width='269') 加息券使用条件
+                        th(width='199') 最高加息金额(元)／时长(天)
+                        th(width='123') 有效期
+                        th 状态
+                    tbody.text-center#userRedPacket
+                .pagination
+block script
+    include ../jslib/account/ratecouponjs

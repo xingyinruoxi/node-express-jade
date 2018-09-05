@@ -1,0 +1,100 @@
+extend ../common
+block position
+    - var position=true
+block main
+    input#ProductType(type='hidden',value=ProductType)
+    section.container
+        //确认出借产品
+        .panel_product_confirm
+            dl
+                dt.pad-top-40
+                    span.font28.color-black 确认出借产品&nbsp;
+                    span.font18#p_name
+                dd.pad-bottom-40.pad-top-40
+                    .row.pad-bottom-30.pad-top-30
+                        .col-33 出借金额：
+                            span#p_investmentAmount.color-red.font24
+                            |元&emsp;
+                            a.color-gray.text-underline(href='javascript:' onClick="javascript :history.back(-1);") 返回修改金额
+                        .col-33 到期还款金额：
+                            span#p_income.color-black.font24
+                            |元
+                        .col-33 预计收益：
+                            span#p_interest.color-black.font24
+                            |元&emsp;
+                            a.color-gray.text-underline.repayPlan(href='javascript:;') 查看还款计划
+        //红包，加息劵
+        .panel_product_confirm
+            dl.dl_tab.pad-top-15.dl_tab_new
+                dt
+                    a.active(href='javascript:;') 抵现红包
+                    a(href='javascript:;') 加息劵
+                    span#raiseearning1.hidden 加息预计收益(元):
+                    span#raiseearning2.hidden 3.78
+                dd.active
+                    div.box.list_redpacket
+                dd.tab.new
+                    div.box.list_coupon
+
+
+        //账户支付
+        .panel_product_confirm
+            dl.dl_tab.pad-top-15
+                dt
+                    a.active(href='javascript:;') 账户支付
+                dd.active
+                    p.font18 账户余额：
+                        span#accountbalance #{accountBalance}
+                        span 元
+                        span#nobalance1.hidden.color-red (余额不足)
+                        span &emsp;&emsp;&emsp;&emsp;还需支付金额：
+                        span#payMoney1.color-red
+                        span#payMoney2.hidden.color-red
+                        span#payMoney3.hidden
+                        span#payMoney4.hidden.color-red
+                        span#payMoney5 元
+                        a.btn.btn-default.btn_recharge(href=website+'/user/recharge.html' style='font-size:14px') 充值
+                    #nobalance2.hidden.color-red.pad-top-5
+                        i.fa.fa-exclamation-circle.fa-fw.color-gray
+                        |您账户的可用余额不足，请通过其它方式向账户充值足够金额后完成出借
+                    li.row.font18.pad-top-25
+                        .col-10.pad-top-10(style='width:110px') 手机验证码：
+                        .col-15
+                            .form-group(style='margin-bottom:5px')
+                                input#smsCode.form-control(placeholder='输入手机验证码')
+                                .form-error(style='')
+                        .col-15
+                            a.btn.btn_send_code(href='javascript:;') 获取验证码
+                    .color-red
+                        i.fa.fa-exclamation-circle.fa-fw.color-gray
+                        | 银行将向您的银行卡预留手机号
+                        span #{mixMobile}
+                        |发送验证码
+                    a.btn.btn-default.btn_submit(href='javascript:;') 确认出借
+
+        //查看回款计划
+        #planDetail.hidden
+            //div
+                span 投资金额：1,000.00元
+                span 起息日期： 2017-7-5
+                span 计息天数：124天
+                span 到期总回款：1,030.55元
+                span 预计收益：30.55元
+            table.table(cellpadding='0',cellspacing='0')
+                thead
+                    th(width='119') 还款日期
+                    th(width='119') 还款金额(元)
+                    th(width='339') 付息金额(元)
+                    th(width='185') 还本金额(元)
+                tbody.trlist.text-center
+                    tr
+                        td 2017-08-01
+                        td 6.65
+                        td 6.65
+                        td 0.00
+        input(type='hidden' id='signTicket' name='signTicket' value='#{signTicket}')
+        input(type='hidden' id='signToken' name='signToken' value='#{signToken}')
+block script
+    include ../jslib/product/productconfirmjs
+
+

@@ -1,0 +1,441 @@
+block config
+doctype html
+html(lang="zh-CN")
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible",content="IE=edge")
+        meta(name="viewport",content="width=device-width, initial-scale=1,,maximum-scale=1,user-scalable=no")
+        //上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！
+        title= seo.title
+        meta(name="keywords",content="#{seo.keywords}")
+        meta(name="description",content="#{seo.discription}")
+        meta(name="author",content="jintoushou")
+        link(rel='shortcut icon',href=website+'/favicon.ico')
+        link(rel='stylesheet', href=website+'/stylesheets/font-awesome.min.css',id='fontawesomecss')
+        link(rel='stylesheet', href=website+'/css/jintoushou-main.min.css')
+        <!--[if lt IE 9]>
+        <script src="/libs/html5shiv.min.js"></script>
+        <![endif]-->
+        block style
+    body
+        block header
+            header#header
+                div.container.top-bar
+                    div.row
+                        div.col-40 服务热线：400-101-7660
+                            .fa.fa-weixin
+                                .code
+                                    i.fa.fa-caret-up
+                                    img(src=website+'/images/codeWeixin.png',width='106',alt='winxin')
+                                    span 扫一扫关注金投手
+                            a(href='http://weibo.com/jtoushou',target='_blank',rel="nofollow")
+                                i.fa.fa-weibo
+                        div.col-60
+                            if tel
+                                a(href=website+'/user/zhzl/') 欢迎您，#{tel}
+                                a.info(href=website+'/user/message.html') 消息
+                                    if message
+                                        sup #{message}
+                                a(href=website+'/logout.html') 退出
+                            else
+                                if !loginHeader
+                                    a(href=website+'/signin.html',rel="nofollow") 登录
+                                    a(href=website+'/signup.html',rel="nofollow") 注册
+                            if !loginHeader
+                                a(href=website+'/help/',target='_blank',rel="nofollow") 帮助中心
+                div.navbar
+                    div.container
+                        div.row
+                            div.col-30
+                                h1.hidden 金投手金融信息服务(北京)有限公司
+                                a.logo(href=website+'/') 金投手 保收益
+                            div.col-70
+                                nav
+                                    ul
+                                        if !loginHeader
+                                            - var narBarInfo=[{title:'首页',url:'/'},{title:'票据贷',url:'/piaojudai/'},{title:'退税贷',url:'/tuishuidai/'},{title:'当前在售',url:'/onSaleingProduct/'},{title:'信息披露',url:'/xxpl/',target:'_blank'},{title:'投资者教育',url:'/tzzjy/',target:'_blank'},{title:'我的账户',url:'/user/zhzl/'}];
+                                        else
+                                            - var narBarInfo=[{title:'首页',url:'/'},{title:'帮助中心',url:'/help/',target:'_blank'}];
+                                        each item in narBarInfo
+                                            li(class=(item.title === curUrlTitle) ? 'active' : '')
+                                                if item.title == '我的账户'
+                                                    a.account(href=website+item.url)
+                                                        span #{item.title}
+                                                else
+                                                    a(href=website+item.url,target=item.target) #{item.title}
+        block position
+        if position
+            //面包屑导航开始
+            .container.breadcrumb 您所在的位置：
+                -
+                    crumbs={
+                    '账户总览':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '我的项目':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '交易记录':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '我要充值':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '充值结果':{p:'我要充值',url:'/user/zhzl/',pp:'首页'},
+                    '我要提现':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '提现结果':{p:'我要提现',url:'/user/zhzl/',pp:'首页'},
+
+                    '银行存管账户信息':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '抵现红包':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '加息券':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '邀请好友':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '我的好友':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+
+                    '安全设置':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '消息公告':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '公司介绍':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+                    '团队介绍':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+                    '运营数据':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+
+                    '通知公告':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+                    '公司报告':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+                    '公司动态':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+                    '媒体报道':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+                    '合作伙伴':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+
+                    '联系我们':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+                    '法律法规':{p:'投资者教育',url:'/tzzjy/',pp:'首页'},
+                    '行政法规':{p:'投资者教育',url:'/tzzjy/',pp:'首页'},
+                    '规范性文件':{p:'投资者教育',url:'/tzzjy/',pp:'首页'},
+                    '司法解释':{p:'投资者教育',url:'/tzzjy/',pp:'首页'},
+
+                    '知识百科':{p:'投资者教育',url:'/tzzjy/',pp:'首页'},
+                    '专栏文章':{p:'投资者教育',url:'/tzzjy/',pp:'首页'},
+                    '忘记密码':{p:'首页',url:'/forgetpwdStart.html'},
+                    '网站地图':{p:'首页',url:'/sitemap.html'},
+                    '法律声明':{p:'首页',url:'flsm.html'},
+
+                    '登录遇到问题':{p:'首页',url:'/'},
+                    '注册遇到问题':{p:'首页',url:'/'},
+                    '忘记密码遇到问题':{p:'首页',url:'/'},
+                    '注册成功':{p:'首页',url:'/signupsuccess.html'},
+                    '找回密码':{p:'首页',url:'/'},
+
+                    '金保理':{p:'金保理',url:'/baoli',pp:'首页'},
+                    '退税贷':{p:'退税贷',url:'/baoli',pp:'首页'},
+                    '票据贷':{p:'票据贷',url:'/baoli',pp:'首页'},
+                    '修改密码':{p:'首页',url:'/changepwdstart.html'},
+                    '投资结果':{p:'首页',url:'/'},
+
+                    '确认投资':{p:'产品列表',url:'/baoli',pp:'首页'},
+                    '交易明细':{p:'我的账户',url:'/user/zhzl/',pp:'首页'},
+                    '招贤纳士':{p:'信息披露',url:'/xxpl/',pp:'首页'},
+                    /*'热门问题':{p:'帮助中心',url:'/help/',pp:'首页'},
+                    '安全保障':{p:'帮助中心',url:'/help/',pp:'首页'},
+                    '收益与奖励':{p:'帮助中心',url:'/help/',pp:'首页'},
+                    '资金出借':{p:'帮助中心',url:'/help/',pp:'首页'},
+                    '充值与提现':{p:'帮助中心',url:'/help/',pp:'首页'},
+
+                    '存管开户与绑卡':{p:'帮助中心',url:'/help/',pp:'首页'},
+                    '注册与登录':{p:'帮助中心',url:'/help/',pp:'首页'},
+                    '手续费问题':{p:'帮助中心',url:'/help/',pp:'首页'},
+                    '金投手介绍':{p:'帮助中心',url:'/help/',pp:'首页'},*/
+                    };
+                ol
+                    each item,i in crumbs
+                        if(i==curTab||i==curUrlTitle)
+                            if(item['pp'])
+                                li
+                                    a(href=website+'/') #{item.pp}
+                            li
+                                a(href=website+item.url) #{item.p}
+                            li #{curTab||curUrlTitle}
+
+        //面包屑导航结束
+        block content
+        block leftnav
+        if leftnav
+            //列表页左侧导航
+            section.container
+
+                .left_nav
+                    -
+                        listnav=[
+                            {
+                                children:[
+                                    {name:'公司介绍',url:'/xxpl/gsjs/'},
+                                    {name:'团队介绍',url:'/xxpl/tdjs/'},
+                                    {name:'运营数据',url:'/xxpl/yysj.html'},
+                                    {name:'通知公告',url:'/xxpl/tzgg/'},
+                                    {name:'公司报告',url:'/xxpl/gsbg/'},
+                                    {name:'公司动态',url:'/xxpl/gsdt/'},
+                                    {name:'媒体报道',url:'/xxpl/mtbd/'},
+                                    {name:'合作伙伴',url:'/xxpl/hzhb/'},
+                                    {name:'招贤纳士',url:'/xxpl/zxns/'},
+                                    {name:'联系我们',url:'/xxpl/lxwm/'},
+                                ]
+                            },
+                        ]
+                    each items in listnav
+                        ul
+                            each item in items.children
+                                li(class=(item.name === curTab) ? 'active' : '')
+                                    a(href=website+item.url) #{item.name}
+                block right_help
+
+            //列表页左侧导航
+
+
+        block leftnavtzzjy
+        if leftnavtzzjy
+            //出借者列表页左侧导航
+            section.container
+                .left_nav
+                    -
+                        listnav=[
+                            {
+                                children:[
+                                    {name:'法律法规',url:'/tzzjy/flfg/'},
+                                    {name:'行政法规',url:'/tzzjy/xzfg/'},
+                                    {name:'规范性文件',url:'/tzzjy/gfxwj/'},
+                                    {name:'司法解释',url:'/tzzjy/sfjs/'},
+                                    {name:'知识百科',url:'/tzzjy/zsbk/'},
+                                    {name:'专栏文章',url:'/tzzjy/zlwz/'},
+                                ]
+                            },
+                        ]
+                    each items in listnav
+                        ul
+                            each item in items.children
+                                li(class=(item.name === curTab) ? 'active' : '')
+                                    a(href=website+item.url) #{item.name}
+                block right_help
+
+
+        //出借者开通充值提醒
+        block topnotice
+        if topnotice
+            .container
+                if !isheadshow.bindSerialNo
+                    .alert_warning
+                        span 开通银行存管账户，保障您的资金安全&emsp;
+                        a.btn_default(href=website+'/user/bankaccountinfo.html') 立即开通银行存管账户
+                        a.btn_close(href='javascript:;') &times
+                else if !isheadshow.riskRating
+                    .alert_warning
+                        span 您尚未进行风险承受能力评估，这项评估有助于您更清楚的了解自己的出借定位。
+                        a.btn_default(href=website+'/user/securitysetup.html?index=1') 立即评估
+                        a.btn_close(href='javascript:;') &times
+                else if isheadshow.isredorcou
+                    .alert_warning
+                        span 您有可用红包/加息劵
+                        a.btn_default(href=website+'/onSaleingProduct/') 立即出借
+                        a.btn_close(href='javascript:;') &times
+
+            //出借者列表页左侧导航
+        block left
+        if left
+            //主体内容开始
+            section.container
+                //列表目录
+                aside#aside
+                    .list_group
+                        -
+                            listInfo=[
+                            {
+                            title:'我的账户',
+                            children:[
+                            {name:'账户总览',url:'/user/zhzl/'},
+                            {name:'我的项目',url:'/user/myrepayment.html'}
+                                    ]
+                                },
+                                {
+                                    title:'资金管理',
+                                    children:[
+                                        {name:'交易明细',url:'/user/dealhistory.html?type=0'},
+                                        {name:'我要充值',url:'/user/recharge.html',ecardType :1},
+                                        {name:'我要提现',url:'/user/getcash.html',ecardType : 1},
+                                        {name:'银行存管账户信息',url:'/user/bankaccountinfo.html'}
+                                    ]
+                                },
+                                {
+                                    title:'我的奖励',
+                                    children:[
+                                        {name:'抵现红包',url:'/user/redpacket.html'},
+                                        {name:'加息券',url:'/user/ratecoupon.html'},
+                                    ]
+                                },
+                                {
+                                    title:'邀请管理',
+                                    children:[
+                                        {name:'邀请好友',url:'/user/invitedfriends.html'},
+                                        {name:'我的好友',url:'/user/myfriends.html'}
+                                    ]
+                                },
+                                {
+                                    title:'账户设置',
+                                    children:[
+                                        {name:'安全设置',url:'/user/securitysetup.html'},
+                                        {name:'消息公告',url:'/user/message.html'}
+                                    ]
+                                }
+                            ]
+                        each items in listInfo
+                            h4 #{items.title}
+                                i.fa.fa-caret-down.fa-fw
+                            ol
+
+                                each item in items.children
+                                    - var checkCardType= isheadshow.eCardType
+                                    if (!item.ecardType)
+                                        li(class=(item.name === curUrlTitle) ? 'active' : '')
+                                            a(href=website+item.url,rel="nofollow") #{item.name}
+                                    else if !isheadshow.bindSerialNo||checkCardType==='0'
+                                        li(class=(item.name === curUrlTitle) ? 'active' : '')
+                                            a(href=website+item.url,rel="nofollow") #{item.name}
+                block right
+        block main
+block footer
+
+//底部开始
+footer#footer
+    mixin qrcode
+        .code-line.pad-top-10
+            img(src=website + '/images/code-footer.png')
+    mixin tel
+        p.pad-top-5 在线客服：工作日9:00-21:00&emsp;非工作日9:00-18:00
+            ul.list-unstyled
+                li 联系电话：400-101-7660
+                li 客服邮箱：kf@jtoushou.com
+                li
+                    a(href='http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzkzODE3NzcwMV80NTQwOTVfNDAwMTAxNzYwMF8yXw',target='_blank') 企业 QQ：点击咨询>>
+                //-li.color-gray ＱＱ群：483810224（已满）
+    mixin copyright(lineWrap)
+        p &copy;2016 金投手 All rights reserved&emsp;|&emsp;金投手金融信息服务（北京）有限公司!{lineWrap}
+            |京ICP证150631号京ICP备15002289号
+        p 金投手金融信息服务（北京）有限公司  版权所有 | 投资有风险，购买需谨慎
+    unless loginHeader
+        div.bg-white
+            .container
+                .row
+                    .col-40.pad-top-20
+                        .row
+                            .col-33
+                                h4 关于我们
+                                ul.pad-top-5
+                                    -var aboutUs=[{title:'公司介绍',url:'/xxpl/gsjs/'},{title:'联系我们',url:'/xxpl/lxwm/'}];
+                                    each item in aboutUs
+                                        li
+                                            a(href=website + item.url,target='_blank',rel="nofollow") #{item.title}
+                            .col-33
+                                h4 平台保障
+                                ul.pad-top-5
+                                    -var 安全保障
+                                    -var safetyGuarantee=[{title:'安全保障',url:'/guarantee.html'},{title:'法律声明',url:'/flsm.html'}];
+                                    each item in safetyGuarantee
+                                        li
+                                            a(href=website + item.url,target='_blank',rel="nofollow") #{item.title}
+                            .col-33
+                                h4 帮助中心
+                                ul.pad-top-5
+                                    -var helpCenter=[{title:'热门问题',url:'/help/rmwt/',id:'hotQuestion'},{title:'网站地图',url:'/sitemap/'}];
+                                    each item in helpCenter
+                                        li
+                                            a(href=website + item.url,id=item.id,target='_blank',rel="nofollow") #{item.title}
+                    .col-25.text-center.qrcode
+                        +qrcode
+                    .col-35.tel
+                        +tel
+        .container.footer-bottom
+            p 友情链接：
+                -var frendLinks=[{title:'网贷之家',url:'http://www.wdzj.com/'},{title:'网贷天眼',url:'http://www.p2peye.com/'},{title:'创富金融',url:'http://www.qushi.com.cn/'},{title:'理财资讯',url:'理财资讯.html'},{title:'中元财富',url:'http://www.zycf-china.com/'},{title:'天津贷款',url:'http://tianjin.jiedai.cn/'}];
+                each item ,i in frendLinks
+                    a(href=item.url,target='_blank') #{item.title}
+                    unless i == frendLinks.length - 1
+                        | &emsp;|&emsp;
+            +copyright('&emsp;|&emsp;')
+    else
+        div.bg-white
+            .container
+                .row
+                    .col-45.pad-top-20
+                        div.color-gray.font12
+                            +copyright('<br>')
+                    .col-25.text-center.qrcode(style='position:relative;left:-40px;')
+                        .code-line.pad-top-10
+                            +qrcode
+                    .col-30.tel(style='text-indent: 20px;')
+                       +tel
+//工具栏
+.toolbar
+    ul
+        li.mobile_btn
+            .weixin_code
+                i
+                    img(src='https://www.jintoushou.com/source/v1/pc/img/codeWeixin.png' style='margin-top:-3px;')
+                p 关注金投手
+                span.angle
+        a(href='http://www.sobot.com/chat/pc/index.html?sysNum=700b7ec5c8884e6fbc16baedf679ceca',target='_blank',rel="nofollow")
+            li.online_service
+        li.calculator_btn
+            dl.calculator
+                dt 理财计算器
+                    a(href='javascript:;') &times;
+                dd
+                    form
+                        ol
+                            li.form_label
+                                input.form_input#amount(placeholder='输入出借金额')
+                                span 元
+                                .form-error
+                            li.color-gray.text-center#unitType 计息单位&nbsp;&nbsp;&nbsp;
+                                label
+                                    input(type='radio',name='radio',value='month')
+                                    span &nbsp;月&nbsp;&nbsp;
+                                label
+                                    input(type='radio',name='radio',value='day',checked)
+                                    span &nbsp;天
+                            li.form_label
+                                input.form_input#term(placeholder='输入出借期限')
+                                span 天
+                                .form-error
+                            li.form_label
+                                input.form_input#annualRate(placeholder='输入年化收益')
+                                span %
+                                .form-error
+                            li.form_label
+                                select.form_input#repayType
+                                    option(selected,value='principalAndInterestTotally') 一次性还本息
+                                    option#unitTypeDay(value='equalInterestMonthlyByDay')  先息后本
+                            div
+                                input.btn_reset(type='reset',value='重置')
+                                a.btn_submit(href='javascript:;') 开始计算
+            .calculator_result
+                .leftBar
+                    a.fa.fa-angle-right(href='javascript:;')
+                .resultTable
+                    //p 假设起息日期：2016-00-00
+                    table.table(width='100%',cellpadding='0',cellspacing='0')
+                        thead
+                            tr
+                                td(style='border-left:none;') 还款日期
+                                td 应收本息（元）
+                                td 应收利息（元）
+                                td 应收本金（元）
+                        tbody#repayPlanBody
+                            tr.color-gray
+                                td(style='border-left:none;') 2016-04-01
+                                td 0000.00
+                                td 0000.00
+                                td 0000.00
+                        tfoot#repayPlanFooter
+                            tr
+                                th(style='border-left:none;') 总计
+                                th 00.00
+                                th 00.00
+                                th 0000.00
+        li.app_btn_none
+            .app_code
+                i
+                    img(src=website+'/images/qrcode.jpg')
+                p 扫描下载APP
+                span.angle
+        li.gotop_btn
+block script
+    script(src="/libs/jquery-1.7.2.min.js")
+    <!--[if lt IE 9]>
+    <script src="/libs/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/libs/layer/layer.js"></script>

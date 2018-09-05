@@ -1,0 +1,197 @@
+extend ../common
+block main
+block position
+    - var position=true
+block leftnav
+    -var leftnav=true
+block right_help
+    .right_xxpl
+        h3 招贤纳士
+        .aboutus_zxns
+            .text-center.pad-top-40
+                img(src=website+'/images/aboutus/zxns_01.png')
+            h4 招聘需求
+            .zxns_tab.clearfix
+                dl.dl_tab1
+                    dt
+                        a.active(href='javascript:;') Java开发工程师
+                        a(href='javascript:;') Android开发工程师
+                        a(href='javascript:;') 金融类产品经理
+                        a(href='javascript:;') Web前端工程师
+                        a(href='javascript:;') iOS  开发工程师
+                        a(href='javascript:;') BD经理
+                    dd.active
+                        h5 Java开发工程师
+                        h6 岗位职责
+                        ol
+                            li 1、参与公司项目的管理后端、web端、H5端的功能开发；
+                            li 2、负责功能模块的需求分析、文档编写及编码工作；
+                            li 3、负责项目开发过程中的技术攻关及运行中出现的技术问题；
+                            li 4、负责指导初级工程师的开发工作，促使研发团队整体技术水平提升；
+                            li.pad-bottom-10 5、参与定期的review项目代码和评审。
+                        h6 岗位要求
+                        ol
+                            li 1、统招本科及以上学历，计算机及相关专业毕业；
+                            li 2、具有3年以上JavaEE软件行业经验，熟悉Spring、Hibernate、Mybatis、Struts、SpringMVC等框架；
+                            li 3、熟悉MySQL数据库；
+                            li 4、熟悉memcached、redis等缓存技术；
+                            li 5、熟悉javascript、jquery等技术，了解html、css等页面语言；
+                            li 6、熟悉freemarker、velocity等模板技术优先考虑；
+                            li.pad-bottom-10 7、具有较强的沟通能力，乐于接受挑战，能吃苦耐劳，具有团队精神。
+
+                    dd
+                        h5 Android工程师
+                            h6 岗位职责
+                            ol
+                                li 1、独立完成android客户端程序的开发；
+                                li 2、根据产品需求开发相关的移动产品；
+                                li.pad-bottom-10 3、验证和修正测试中发现的问题。
+                            h6 岗位要求
+                            ol
+                                li 1、三年以上客户端开发经验，熟悉Android手机平台； 
+                                li 2、熟悉掌握Java开发语言； 
+                                li 3、精通android平台下的高性能编程及性能调优；
+                                li 4、开发基础良好，理解设计模式，在项目或产品中有很好的设计实践； 
+                                li 5、有强烈的责任心和团队精神，善于沟通和合作；能独立完成设计和编码；
+                                li.pad-bottom-10 6、对Android的UI控件有实际使用和优化经验者优先，有前端开发经验者优先。 
+                    dd
+                        h5 金融类产品经理
+                            h6 岗位职责
+                            ol
+                                li 1、负责产品规划与设计，分析用户需求给出产品原型图，编写文档及操作手册；
+                                li 2、统筹管理平台产品（项目）线，包括并发控制、组织实施及进度管理；
+                                li 3、在项目进行过程中，控制需求范围，进行产品生命周期分析；
+                                li.pad-bottom-10 4、定期需求调研，做版本迭代。
+                            h6 岗位要求
+                            ol
+                                li 1、两年以上互联网产品设计及项目管理经验，能独立完成产品原型图，流程图及功能结构图；
+                                li 2、对用户体验敏感，有较强的需求分析、项目管理能力，执行能力；
+                                li 3、熟练使用Visio,Axure,Mindmanager等工具；
+                                li 4、性格开朗，积极向上，热爱产品设计/策划及项目管理；
+                                li.pad-bottom-10 5、互联网金融公司及大型互联网公司工作者优先。
+                    dd
+                        h5 Web前端工程师
+                            h6 岗位职责
+                            ol
+                                li 1、负责金投手业务的前端开发工作；
+                                li 2、基于HTML5.0标准进行页面制作，编写可复用的用户界面组件；
+                                li 3、持续的优化前端体验和页面响应速度，并保证各浏览器的兼容性和执行效率；
+                                li 4、提升产品的用户体验、前端性能以及团队的开发效率；
+                                li 5、使用JS编写封装良好的前端交互组件，维护及优化网站前端页面性能；
+                                li 6、创建高性能，高可用性的前端框架；
+                                li.pad-bottom-10 7、编写高性能动画。
+                            h6 岗位要求
+                            ol
+                                li 1、3年以上前端开发工作经验，2年以上前端架构经验，有网站前端性能、可访问性、可维护性等方面的实践经验；
+                                li 2、能够编写严谨易读的前端代码，能为产品制定合适的前端架构与规范；
+                                li 3、有丰富的前端模块化的经验，维护过模块化的前端UI组件；
+                                li 4、参与维护过前端开源项目优先考虑；
+                                li.pad-bottom-10 5、精通nodejs、express、jade或者ejs模版引擎、mvc、单元测试、前端CI/CD支持。
+                    dd
+                        h5 iOS工程师
+                            h6 岗位职责
+                            ol
+                                li 1、负责iOS客户端软件的技术设计和研发；
+                                li 2、参与客户端产品的架构设计，分析和发现系统的优化点；
+                                li 3、学习和研究新技术以满足产品的新需求；
+                                li.pad-bottom-10 4、指导与培养工程师，提升团队整体技术水平。
+                            h6 岗位要求
+                            ol
+                                li 1、3年及以上开发工作经验，2年以上iOS实际开发经验；
+                                li 2、熟练掌握Objective-C语言、iOS SDK、XCode开发环境，熟练掌握iOS界面和交互开发；
+                                li 3、有良好编码风格，追求代码执行效率；
+                                li 4、对iOS APP性能优化和内存优化有了解，熟练掌握iOS平台下的代码调试和调优技术；
+                                li 5、具备较强的架构能力、设计能力、需求分析能力；
+                                li.pad-bottom-10 6、具有较强的沟通能力，乐于接受挑战，能吃苦耐劳，具有团队精神。
+                    dd
+                        h5 BD经理
+                            h6 岗位职责
+                            ol
+                                li 1、根据公司和部门的规划，制定商务合作计划并按照指标推进完成；
+                                li 2、负责联系各类线上、线下各类合作资源并达成合作，完成客户发展、业务量等各类指标；
+                                li 3、负责商务合作伙伴的拓展、沟通、签约、后期维护等工作；
+                                li 4、独立完成商务谈判，并维护商务合作关系，对整个商务合作的过程和结果负责，规划合作项目计划及进度执行；
+                                li 5、带领团队完成项目目标，并指导和培训团队快速达成业绩目标；
+                                li.pad-bottom-10 6、完成领导交办的其他相关工作。
+                            h6 岗位要求
+                            ol
+                                li 1、本科及以上学历，男女不限；
+                                li 2、具备3年以上商务合作经验，具有成功合作项目经验；
+                                li 3、熟悉互联网行业，具备跨行业的各类异业合作资源；
+                                li 4、具备优秀的商务谈判能力、细致耐心，能够有效把握客户需求、承担工作压力；
+                                li.pad-bottom-10 5、具有团队协作意识和很强的沟通能力，能与多个部门建立良性互动。
+            p 请发送您的简历至
+                span.color-red &nbsp;hr@jtoushou.com
+                | ，标题请注明所申请职位
+            h4 公司福利
+            .gsfl
+                .font24.color-red.pad-bottom-30.pad-top-40 成为金投手人的4大理由
+                .row
+                    .col-50
+                        .bg_gray.pull-right
+                            .pad-top-5 五险一金、带薪年假、股权激励、
+                            p 健康关怀，贴心为你护航！
+                    .col-50
+                        .bg_gray.pull-left
+                            .pad-top-5 绩效奖励、团建经费、节日礼金、
+                            p 生日会、众多惊喜，带你嗨不停！
+                .row
+                    .col-50
+                        .bg_gray.pull-right
+                            .pad-top-5 简单、平等互助的工作方式，
+                            p 创意无限，妙趣挡不住！
+                    .col-50
+                        .bg_gray.pull-left
+                            .pad-top-5 舞台够大，让你乐享挑战，
+                            p 成长型氛围，展现最美的风采！
+            .zxns_tab.clearfix.pad-bottom-40
+                dl.dl_tab
+                    dt(style='height:24px;')
+                        a.active(href='javascript:;') 办公环境
+                        a(href='javascript:;') 员工关怀
+                        a(href='javascript:;') 公司活动
+                    dd.active
+                        .item
+                            ul
+                                li
+                                    img(src=website+'/images/aboutus/zxns_03.png')
+                                li
+                                    img(src=website+'/images/aboutus/zxns_04.png')
+                                li
+                                    img(src=website+'/images/aboutus/zxns_05.png')
+                                li
+                                    img(src=website+'/images/aboutus/zxns_06.png')
+                    dd
+                        //
+                        .item
+                            ul
+                                li
+                                    img(src=website+'/images/aboutus/zxns_06.png')
+                                li
+                                    img(src=website+'/images/aboutus/zxns_05.png')
+                                li
+                                    img(src=website+'/images/aboutus/zxns_04.png')
+                                li
+                                    img(src=website+'/images/aboutus/zxns_03.png')
+                    dd
+                        .item
+                            ul
+                                li
+                                    img(src=website+'/images/aboutus/zxns_06.png')
+                                li
+                                    img(src=website+'/images/aboutus/zxns_05.png')
+                                li
+                                    img(src=website+'/images/aboutus/zxns_04.png')
+                                li
+                                    img(src=website+'/images/aboutus/zxns_03.png')
+    //
+    .lb_wrap
+        .lightbox_bg
+            .lightbox
+                img.lg_img(src=website+'/images/aboutus/loading.gif')
+                p.prev
+                p.next
+
+
+block script
+    include ../jslib/aboutus/zxnsjs

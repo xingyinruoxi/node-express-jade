@@ -1,0 +1,666 @@
+extends ../common
+block position
+    - var position=true
+//主体内容开始
+block main
+    section.container
+        .productdetail.clearfix
+            section
+                input#ptype(type='hidden' value='#{ptype}')
+                if ptype==='baoli'
+                    dl
+                        dt
+                            h4
+                                span#p_name 新手专享计划201期2
+                                label.label.label-default#p_label
+                        dd.color-gray
+                            .row
+                                .col-35
+                                    #p_rate.num.color-red 6.00%
+                                    p 预期年化收益(%)
+                                .col-30.text-center
+                                    #p_timeLimit.num.color-black 7
+                                    p#p_timeLimitUnit 出借期限(天)
+                                .col-35.text-center
+                                    #p_amount.num.color-black 10.00
+                                    p 项目规模(万)
+                            footer
+                                .row
+                                    .col-40
+                                        p 发布日期：
+                                            span#p_createTime 2017-04-19
+                                        p 起息日期：
+                                            span#p_repayStartDate 2017-04-19
+                                    .col-35
+                                        p 计息方式：
+                                            span 投标当日计息
+                                        p 还款方式：
+                                            span#p_repayType 一次性还本息
+                                    .col-25
+                                        p &emsp;出借单位：
+                                            span#p_tenderIncreaseAmount 100元
+                                        p &emsp;最小出借：
+                                            span#p_tenderInitAmount 100元
+                            .progress
+                                .progress_bar(style='width:40%')
+                                    span.ico.ico_tip 40%
+                            p.pad-top-25 机构1：
+                                span#p_borrowerName 中国农业银行
+                if ptype==='chukoutuishui'||ptype==='piaojudai'
+                    //dev #{ptype}
+                    dl
+                        dt
+                            h4
+                                span#p_name 新手专享计划201期2
+                                a(href='').label.label-default 满标有礼
+                                label.label.label-default#p_label
+                        dd.color-gray
+                            .row
+                                .col-35
+                                    #p_rate.num.color-red 6.00%
+                                    p 借贷利率
+                                .col-30.text-center
+                                    #p_timeLimit.num.color-black 7
+                                    p#p_timeLimitUnit 投资期限(天)
+                                .col-35.text-center
+                                    #p_amount.num.color-black 10.00
+                                    p 项目规模(万)
+                            footer
+                                .row
+                                    .col-40
+                                        p 募集开始日期：
+                                            span#c_tenderStartTime 2017-04-19
+                                        p 募集截止日期：
+                                            span#c_tenderEndTime 2017-04-19
+                                        p 还款方式：
+                                            span#p_repayType 一次性还本付息
+                                    .col-35
+                                        p 预计起息日期：
+                                            span#c_repayStartDate
+                                        p 预计到期日期：
+                                            span#c_productEndTime
+                                        p.hidden 单笔出借限额：
+                                            span#c_singleMaxAmont
+                                    .col-25
+                                        p &emsp;起投金额：
+                                            span#p_tenderInitAmount
+                                        p &emsp;递增金额：
+                                            span#p_tenderIncreaseAmount
+                                        p.hidden 单人出借限额：
+                                            span#c_tenderMaxAmount
+                            .progress(style='margin-bottom:25px;')
+                                .progress_bar(style='width:40%')
+                                    span.ico.ico_tip 40%
+                            if ptype==='piaojudai'
+                                p 承兑银行：
+                                    span#c_productExtends_value xx银行
+                            else
+                                //p.pad-top-25 &emsp;
+                            p
+                                span 到账日为到期日T+3日内
+                                span.color-red &emsp;&emsp;&emsp;项目风险等级：
+                                span.color-red#c_productRisk R2较低风险
+                                span.color-red ，适用于测评结果为平衡型的用户
+            aside
+                div.noraml_state.hidden
+                    .count_down 剩余时间：
+                        time#p_remainingTime 00:00:00
+                    p#login_no.hidden 您好，请
+                        a.color-red(href='javascript:;') 登录
+                        | &emsp;查看银行存管账户余额
+                    p#login_yes.color-black.hidden 存管账户可用余额：
+                        span#p_accountBalance 0.00元
+                        a#recharge.btn.btn-default.btn-recharge(style='display:none',href='javascript:;') 充值
+                    p.pad-top-5.pad-bottom-25 剩余可出借金额：
+                        span#p_surplusTenderAmount 17,300.00元
+                    li.form-group
+                        input#textAmount.form-control(placeholder='100元起投,100元递增',maxlength=9,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                        .form-error
+                        //-
+                            .input_group_addon
+                                a.add(href='javascript:;')
+                                    i.fa.fa-fw.fa-caret-up
+                                a.reduce(href='javascript:;')
+                                     i.fa.fa-fw.fa-caret-down
+                    p.pad-top-5.pad-bottom-15 预计收益：
+                        span#earn 0.00元
+                        a#p_calculator.pull-right.calculator(href='javascript:;')
+                            i.ico.ico_calculator
+                            |收益计算器
+                    a#invest.btn.btn-default.btn-submit(href='javascript:;') 立即出借
+                    label.label_checkbox
+                        input#checkRead(type='checkbox',checked)
+                        span.ico
+                        |我已阅读
+                        a(href=website+'/cjqjfwxy.html',target='_blank')《金投手平台居间服务协议》
+                        |和
+                        a(href=website+'/wljdxy.html',target='_blank')《金投手平台网络借贷协议》
+                div.other_state.hidden
+                    p#p_tenderStatusTitle.font20.pad-top-15 此项目还款中
+                    ul.pad-top-40.pad-bottom-40
+                        li#login_no2.pad-bottom-10.hidden 您好，请
+                            a.color-red(href='javascript:;') 登录
+                            | &emsp;查看银行存管账户余额
+                        li#login_yes2.pad-bottom-10.hidden 存管账户可用余额：
+                            span#p_accountBalance2 0元
+                        li#p_tenderUser.pad-bottom-10 出借人数：14人
+                        li#p_tenderStatus.pad-bottom-10 还款状态：企业正常还款中
+                    a#invest2.btn.btn-default.btn-submit(href=website+'/onSaleingProduct/',style='margin-bottom:90px;') 关注其他项目
+        //项目描述
+        .product_describe.clearfix
+            dl.dl_tab
+             dt
+                a.active(href='javascript:;') #{tablist[0]}
+                a(href='javascript:;') #{tablist[1]}
+                a(href='javascript:;') #{tablist[2]}
+                a(href='javascript:;') #{tablist[3]}
+                a(href='javascript:;') #{tablist[4]}
+             dd.active
+                strong #{rule[0][0]}
+                p #{showD[0][rule[0][0]]}
+                strong.pad-top-30 #{rule[0][1]}
+                p #{showD[0][rule[0][1]]}
+                strong.pad-top-30 #{rule[0][2]}
+                p #{showD[0][rule[0][2]]}
+                strong.pad-top-30 #{rule[0][3]}
+                p #{showD[0][rule[0][3]]}
+                strong.pad-top-30 #{rule[0][4]}
+                p #{showD[0][rule[0][4]]}
+
+
+             //保障措施
+             dd
+                 //风控意见
+                 strong #{rule[1][0]}
+                 p #{showD[1][rule[1][0]]}
+                 //还款保障措施
+                 strong.pad-top-30 #{rule[1][1]}
+                 p #{showD[1][rule[1][1]]}
+                 //相关文件
+                 strong.pad-top-30 #{rule[1][2]}
+                 .slider#slider
+                     a.prev.no_click#prev(href='javascript:;')
+                     a.next#next(href='javascript:;')
+                     #slider_pic.slider_pic
+                         ul
+                             each item,name in showfile
+                                 li.slider-box
+                                     a.alert-pic(href='javascript:;',_href=item)
+                                         img.slider-img(src=item,style='width: 270px;height: 176px;')
+                                         p.slider-text #{name}
+                             //li.slider-box
+                             //   a.alert-pic(href='javascript:;',_href='../images/product/perch.png')
+                             //       img.slider-img(src='../images/product/perch.png')
+                             //       p.slider-text 金投手公司荣获最佳互联网
+                             //li
+                             //    img.slider-img(src='../images/product/smal.png')
+                             //li
+                             //    img.slider-img(src='../images/product/smal.png')
+                             //li.slider-box
+                             //    a.alert-pic(href='javascript:;',_href='../images/product/perch.png')
+                             //        img.slider-img(src='../images/product/perch.png')
+                             //        p.slider-text 金投手公司荣获最佳互联网
+                             //li.slider-box
+                             //    a.alert-pic(href='javascript:;',_href='../images/product/perch.png')
+                             //        img.slider-img(src='../images/product/perch.png')
+                             //        p.slider-text 金投手公司荣获最佳互联网
+
+                 //税单展示
+                 strong.pad-top-30 #{rule[1][3]}
+                 .slider#slider2
+                     a.prev.no_click(href='javascript:;')
+                     a.next(href='javascript:;')
+                     #slider_pic2.slider_pic
+                         ul
+                             each item in showD[1][rule[1][3]]
+                                 li
+                                    img.slider-img(src=item,style='width: 270px;height: 176px;')
+                             //li.slider-box
+                             //    a.alert-pic(href='javascript:;',_href='../images/product/perch.png')
+                             //        img.slider-img(src='../images/product/perch.png')
+                             //        p.slider-text 金投手公司荣获最佳互联网
+                             //li
+                             //    img.slider-img(src='../images/product/smal.png')
+                             //li
+                             //    img.slider-img(src='../images/product/smal.png')
+
+             //风险提示
+             dd
+                strong #{rule[2][0]}
+                p #{showD[2][rule[2][0]]}
+
+             //借款人信息
+             dd
+                 strong 融资人信息
+                 table.invest_table
+                     tr
+                        td 借款人
+                        td #{showD[3][rule[3][0]]['borrowerName']}<br />
+                            span 说明：脱敏处理，包括借款机构中文名称及简称，外文名称及缩写（如有），应与工商注册信息一致）
+                        //td XXX进出口贸易有限公司(简称“XXX贸易”)<br />
+                        //    span 说明：脱敏处理，包括借款机构中文名称及简称，外文名称及缩写（如有），应与工商注册信息一致）
+                     tr
+                         td 注册资本
+                         td #{showD[3][rule[3][0]]['registeredCapital']}元人民币
+                     tr
+                         td 注册地址
+                         td #{showD[3][rule[3][0]]['businessAddress']}
+                             span （脱敏处理）
+                     tr
+                         td 成立时间
+                         td #{showD[3][rule[3][0]]['foundingTime']}
+                             span （说明：以工商注册信息为准）
+                     tr
+                         td 法定代表人
+                         td #{showD[3][rule[3][0]]['legalPerson']}
+                             span （脱敏处理）
+                     tr
+                         td 借款用途
+                         td #{showD[3][rule[3][0]]['use']}<br />
+                             span （说明：指资金流向信息、使用信息及计划等资金运用情况）
+                     tr
+                         td 股东信息
+                         td #{showD[3][rule[3][0]]['shareholderInfo']}
+                             span （脱敏处理）
+                     tr
+                         td 法定代表人信用信息
+                         td #{showD[3][rule[3][0]]['creditInfo']}
+                             span （脱敏处理，指工商注册要求的股东类型、股东名称、股东证件类型等）
+                     tr
+                         td 实缴资本
+                         td #{showD[3][rule[3][0]]['contributedCapital']}元人民币
+                             span （说明：人民币、阿拉伯数字、单位到元）
+                     tr
+                         td 办公地点
+                         td #{showD[3][rule[3][0]]['workAddress']}
+                             span （脱敏处理）
+                     tr
+                         td 经营区域
+                         td #{showD[3][rule[3][0]]['managementArea']}（不含港澳台地区）
+                     tr
+                         td 其他
+                         td #{showD[3][rule[3][0]]['remark']}
+
+             //投资记录
+             dd.invest_record
+                div.row
+                    div.col-33
+                        dl
+                            dt
+                                img(src='../images/product/icon_speed.png')
+                            if showtop[0]
+                                dd
+                                    p 恭喜 #{showtop[0].name}在 #{showtop[0].createTime}
+                                    p 投资 #{showtop[0].money}获得速投手称号
+                                    p 奖励一张
+                                        span.color-red 50元
+                                        | 红包
+                            else
+                                dd
+                                    p 新项目上线后，第一个投资的
+                                    p 用户，奖励一张
+                                        span.color-red 50元
+                                        | 红包
+
+                    div.col-33
+                        dl
+                            dt
+                                img(src='../images/product/icon_gold.png')
+                            if showtop[1]
+                                dd
+                                    p 恭喜 #{showtop[1].name}在 #{showtop[1].createTime}
+                                    p 投资 #{showtop[1].money}获得金投手称号
+                                    p 奖励一张
+                                        span.color-red 50元
+                                        | 红包
+                            else
+                                dd
+                                    p 项目投满后，投资金额最高的
+                                    p 用户，奖励一张
+                                        span.color-red 100元
+                                        | 红包
+
+                    div.col-33
+                        dl
+                            dt
+                                img(src='../images/product/icon_god.png')
+                            if showtop[2]
+                                dd
+                                    p 恭喜 #{showtop[2].name}在 #{showtop[2].createTime}
+                                    p 投资 #{showtop[2].money}获得神投手称号
+                                    p 奖励一张
+                                        span.color-red 50元
+                                        | 红包
+                            else
+                                dd
+                                    p 新项目上线后，最后一个投资的
+                                    p 用户，奖励一张
+                                        span.color-red 50元
+                                        | 红包
+
+                table.record_table
+                    tr
+                        th.text-left 投资用户
+                        th 投资金额(元)
+                        th.text-right 投资日期
+
+                    each item in showlist
+                        tr
+                            td.text-left #{item.name}<i class="fa fa-#{item.osName} fa-fw"></i>
+                            td #{item.money}
+                            td.text-right #{item.createTime}
+                    //- for(var i=0;i<10;i++)
+                    //    tr
+                    //        td.text-left 杨**<i class="fa fa-android fa-fw"></i>
+                    //        td 8,900.00
+                    //        td.text-right 2017-05-08 21:50:44
+
+
+    //评审问卷弹层
+    .layer_question.color-gray.hidden
+        p.risk_warning 风险提示：网络借贷出借人可能获得比较高的借款利息，但也存在比较大的出借风险，请您根据自身的风险承受能力，审慎作出出借决定。
+        .contnet
+            h5 一、年龄
+            ol
+                li
+                    span.ask 1.您的年龄是？
+                    .answer
+                        label
+                            input(type='radio',name='age1')
+                            span.ico.ico_radio
+                            |A.18-25
+                        label
+                            input(type='radio',name='age1')
+                            span.ico.ico_radio
+                            | B.26-50
+                        label
+                            input(type='radio',name='age1')
+                            span.ico.ico_radio
+                            | C.51-60
+                        label
+                            input(type='radio',name='age1')
+                            span.ico.ico_radio
+                            | D.61-65
+                        label
+                            input(type='radio',name='age1')
+                            span.ico.ico_radio
+                            | E.高于65岁
+            h5 二、财务状况
+            ol
+                li
+                    span.ask 2.您的家庭总资产净值为？(不包括自用住宅和私营企业等实业出借，包括储蓄、保险、金融出借、实物出借，并需扣除未结清贷款、信用卡账单等债务)
+                    .answer
+                        label
+                            input(type='radio',name='age2')
+                            span.ico.ico_radio
+                            | A.小于等于15万元
+                        label
+                            input(type='radio',name='age2')
+                            span.ico.ico_radio
+                            | B.大于15万元，小于等于50万元
+                        label.space
+                            input(type='radio',name='age2')
+                            span.ico.ico_radio
+                            | C.大于50万元，小于等于100万元
+                        label
+                            input(type='radio',name='age2')
+                            span.ico.ico_radio
+                            | D.大于100万元，小于等于1,000万元
+                        label.space
+                            input(type='radio',name='age2')
+                            span.ico.ico_radio
+                            | E.大于1,000万元
+            ol
+                li
+                    span.ask 3. 在您的家庭总资产净值中，可用于金融出借(储蓄存款除外)的比例为？
+                    .answer
+                        label
+                            input(type='radio',name='age3')
+                            span.ico.ico_radio
+                            | A.小于10%
+                        label
+                            input(type='radio',name='age3')
+                            span.ico.ico_radio
+                            | B.10%—25%
+                        label
+                            input(type='radio',name='age3')
+                            span.ico.ico_radio
+                            | C.26%—50%
+                        label
+                            input(type='radio',name='age3')
+                            span.ico.ico_radio
+                            | D.大于50%
+            h5 三、出借经验 (任一项选 A 客户均视为无出借经验客户)
+            ol
+                li
+                    span.ask 4.以下哪项最能说明您的出借经验？
+                    .answer
+                        label
+                            input(type='radio',name='age4')
+                            span.ico.ico_radio
+                            | A.除存款、国债外，我几乎不出借其他金融产品
+                        label
+                            input(type='radio',name='age4')
+                            span.ico.ico_radio
+                            | B.10%—25%
+                        label.space
+                            input(type='radio',name='age4')
+                            span.ico.ico_radio
+                            | C.26%—50%
+                        label
+                            input(type='radio',name='age4')
+                            span.ico.ico_radio
+                            | D.大于50%
+
+            ol
+                li
+                    span.ask 5.您出借股票、基金、外汇、金融衍生品等风险出借品的经验是（出借经历越长，您的风险承受能力越强）？
+                    .answer
+                        label
+                            input(type='radio',name='age5')
+                            span.ico.ico_radio
+                            | A.没有经验
+                        label
+                            input(type='radio',name='age5')
+                            span.ico.ico_radio
+                            | B.有经验，但少于2年
+                        label
+                            input(type='radio',name='age5')
+                            span.ico.ico_radio
+                            | C.达到或超过2年，不足5年
+                        label.space
+                            input(type='radio',name='age5')
+                            span.ico.ico_radio
+                            | D.达到或超过5年，不足8年
+                        label
+                            input(type='radio',name='age5')
+                            span.ico.ico_radio
+                            | E.8年及以上
+            h5  四、 出借偏好
+            ol
+                li
+                    span.ask 6.以下哪项描述最符合您的出借态度？
+                    .answer
+                        label
+                            input(type='radio',name='age6')
+                            span.ico.ico_radio
+                            | A.厌恶风险，不希望本金损失，希望获得稳定回报
+                        label.block
+                            input(type='radio',name='age6')
+                            span.ico.ico_radio
+                            | B.保守出借，不希望本金损失，愿意承担一定幅度的收益波动
+                        label.block
+                            input(type='radio',name='age6')
+                            span.ico.ico_radio
+                            | C.寻求资金的较高收益和成长性，愿意为此承担有限本金损失
+                        label.block
+                            input(type='radio',name='age6')
+                            span.ico.ico_radio
+                            | D.希望赚取高回报，愿意为此承担较大本金损失
+            ol
+                li
+                    span.ask 7.假设您有本金100万元，不提供保本承诺的情况下，您会选择哪一种出借机会？
+                    .answer
+                        label
+                            input(type='radio',name='age7')
+                            span.ico.ico_radio
+                            | A.有100%的机会赢取1000元现金，并保证归还
+                        label.block
+                            input(type='radio',name='age7')
+                            span.ico.ico_radio
+                            | B.有50%的机会赢取5万元现金，并有较高可能性归还本金
+                        label.block
+                            input(type='radio',name='age7')
+                            span.ico.ico_radio
+                            | C.有25%的机会赢取50万元现金，并有一定的可能性损失本金
+                        label.block
+                            input(type='radio',name='age7')
+                            span.ico.ico_radio
+                            | D.有10%的机会赢取100万元现金，并有较高可能性损失本金
+            ol
+                li
+                    span.ask 8. 您计划的出借期限是多久？
+                    .answer
+                        label
+                            input(type='radio',name='age8')
+                            span.ico.ico_radio
+                            | A.1年以下
+                        label
+                            input(type='radio',name='age8')
+                            span.ico.ico_radio
+                            | B.1-3年
+                        label
+                            input(type='radio',name='age8')
+                            span.ico.ico_radio
+                            | C.3—5年
+                        label
+                            input(type='radio',name='age8')
+                            span.ico.ico_radio
+                            | D.5年以上
+            ol
+                li
+                    span.ask 9、您进行出借的主要目的是？
+                    .answer
+                        label
+                            input(type='radio',name='age9')
+                            span.ico.ico_radio
+                            | A.资产保值，不愿意承担任何出借风险
+                        label
+                            input(type='radio',name='age9')
+                            span.ico.ico_radio
+                            | B.资产稳健增值，可以承担一定的出借风险
+                        label.space
+                            input(type='radio',name='age9')
+                            span.ico.ico_radio
+                            | C.资产迅速增值，愿意承担较大的出借风险
+            h5  五、风险承受能力
+            ol
+                li
+                    span.ask 10.您的出借出现何种程度的波动时，您会呈现明显的焦虑？
+                    .answer
+                        label
+                            input(type='radio',name='age10')
+                            span.ico.ico_radio
+                            | A.本金无损失，但收益未达预期
+                        label
+                            input(type='radio',name='age10')
+                            span.ico.ico_radio
+                            | B.出现轻微本金损失
+                        label
+                            input(type='radio',name='age10')
+                            span.ico.ico_radio
+                            | C.本金10%以内的损失
+                        label
+                            input(type='radio',name='age10')
+                            span.ico.ico_radio
+                            | D.本金20%—50%的损失
+                        label
+                            input(type='radio',name='age10')
+                            span.ico.ico_radio
+                            | E.本金50%以上损失
+            ol
+                li
+                    span.ask 11、对您而言，保本比高收益更为重要？
+                    .answer
+                        label
+                            input(type='radio',name='age11')
+                            span.ico.ico_radio
+                            | A.非常同意
+                        label
+                            input(type='radio',name='age11')
+                            span.ico.ico_radio
+                            | B.同意
+                        label
+                            input(type='radio',name='age11')
+                            span.ico.ico_radio
+                            | C.无所谓
+                        label
+                            input(type='radio',name='age11')
+                            span.ico.ico_radio
+                            | D. 不同意
+                        label
+                            input(type='radio',name='age11')
+                            span.ico.ico_radio
+                            | E.非常不同意
+
+
+
+        p.question_tip.color-red.hidden
+            i.fa.fa-exclamation-circle.color-gray.fa-fw
+            span#tip 有未勾选项目
+        input(type='hidden' id='signTicket' name='signTicket' value='#{signTicket}')
+        input(type='hidden' id='signToken' name='signToken' value='#{signToken}')
+    .layer_calculator.hidden
+        div.content
+            div.form-group
+                input#textAmountAlert.form-control(placeholder='输入出借余额',maxlength=9,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                div.input_group_addon 元
+            p.text-left 预计收益：
+                span#earnAlert.color-red 0.00元
+            table.table(cellpadding='0',cellspacing='0')
+                thead
+                    th 预计还款日期
+                    th 付息金额(元)
+                tbody#earnAlertList.text-center
+    .pop_container
+    .m_alert
+        //.m_main
+        dl.dl-signup
+            dt
+                span 欢迎登录
+                a(href=website+'/signup.html') 还没有账号? 立即注册
+            dd
+                ul
+                    li.form-group
+                        input.form-control.mobilePhone(placeholder='手机号码',id='tel',name='tel',type='text',maxlength=11,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                        .form-error
+                    li.form-group
+                        input.password.form-control(placeholder='密码',id='password',name='password',type='password',maxlength=20,onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')")
+                        .form-error
+                    if 3 <= signinCount
+                        li.form-group.form-group-code-img.hidden(id='signinVcodeConfirm')
+                            div.clearfix
+                                input.form-control(placeholder='图片验证码',id='signinVcode',type='text',maxlength=4)
+                                img.btn-code-img(src="/images/def.png")
+                            .form-error
+                    else
+                        li.form-group.form-group-code-img.hidden(id='signinVcodeConfirm')
+                            div.clearfix
+                                input.form-control(placeholder='图片验证码',id='signinVcode',type='text',maxlength=4)
+                                img.btn-code-img(src="/images/def.png")
+                            .form-error
+                div.pad-top-10
+                    label.label_checkbox
+                        input#isRemember(type='checkbox',checked)
+                        span.ico
+                        | 记住用户名
+                    a.pull-right.color-gray(href=website+'/forgetpwdStart.html') 忘记密码？
+                a.btn.btn-default(id='signinBtnAlert') 立即登录
+    input(type='hidden' id='TimeLimitUnit' value='#{show.TimeLimitUnit}')
+    input(type='hidden' id='RepayType' value='#{show.RepayType}')
+    .modal-backdrop
+    .placeholder-img
+        img(height='95%')
+block script
+    include ../jslib/product/productdetailjs
+

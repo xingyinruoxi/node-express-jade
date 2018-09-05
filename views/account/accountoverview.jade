@@ -1,0 +1,166 @@
+extend ../common
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    section#section
+        dl.dl_pannel_account
+            dd.account_info
+                header.clearfix
+                    .row
+                        .col-55.accoumary
+                            a.avotar(href='javascript:;')
+                                img(src=website+'/images/account/juser.png',width='120',height=120)
+                            .account_describe
+                                p.welcome #{result.welWord} ，#{accountInfo.mobile}，金投手让理财更有趣！
+
+                                .progress
+                                    .progress_bar(style='width:#{result.percent}%;')
+                                .steps 安全等级：
+                                    span #{result.level}
+                                    if result.percent<100
+                                        a(href=website+'/user/securitysetup.html') 立即提升
+                                .icos
+                                    span.ico.ico_tel.active
+                                        p.text
+                                            i.angle_up
+                                            |绑定手机，
+                                            |已绑定
+
+                                    span.ico.ico_user(class=result.mixBankCard?'active':'')
+                                        p.text
+                                            i.angle_up
+                                            | 存管账户，
+                                            if result.mixBankCard
+                                                | 已开通
+                                            else
+                                                a(href=website+'/user/bankaccountinfo.html') 去开通
+                                    span.ico.ico_clock(class=result.riskRating?'active':'')
+                                        p.text
+                                            i.angle_up
+                                            | 风险测评，
+                                            if result.riskRating
+                                                | 已测评
+                                            else
+                                                a(href=website+'/user/securitysetup.html?sourse=1') 去测评
+
+                        .col-45
+                            .account_balance
+                                div.pad-bottom-10.welcome 存管账户可用余额(元)
+                                if accountInfo.eCardType
+                                    span.color-black.font30(style='font-size:30px') #{accountInfo.accountBalance}
+                                else
+                                    span.color-black.font30(style='font-size:30px') 0.00
+                                if !accountInfo.bindSerialNo
+                                    footer.pad-top-15
+                                        a.btn.btn-default.btn_open(href=website+'/user/bankaccountinfo.html') 开通存管账户
+                                else if accountInfo.eCardType==='1'
+                                    footer.pad-top-15
+                                        | 温馨提示：您绑定的浙商卡可免充值、提现，您的银行卡余额可作为存管账户余额
+                                else
+                                    footer.pad-top-15
+                                        a.btn.btn_recharge(href=website+'/user/recharge.html') 充值
+                                        a.btn.btn_take(href=website+'/user/getcash.html') 提现
+                section.row(style='border-top:1px solid #f3f3f6;padding:20px 10px;width:97%')
+                    .col-20
+
+                        .title.title1
+                            i.account_point
+                            | 总资产(元)
+                            a.tooltip(href='javascript:;')
+                                | ?
+                                p.text
+                                    i.angle-up
+                                    | 出借金额+存管可用余额
+                        span.pad-left-20 #{result.val1}
+                    .col-20
+                        .title.title2
+                            i.account_point
+                            | 出借中金额(元)
+
+                        span.pad-left-20 #{result.val2}
+
+                    .col-20
+                        .title.title4
+                            i.account_point
+                            | 红包／加息卷(个)
+                        span.pad-left-20 #{(result.val3)}
+                    .col-20
+                        .title.title5
+                            i.account_point
+                            | 累计出借(元)
+
+                        span.pad-left-20 #{result.val4}
+                    .col-20
+                        .title.title6
+                            i.account_point
+                            | 累计收益(元)
+
+                        span.pad-left-20    #{result.val5}
+
+        //
+            dl.dl_pannel_account
+                dt 收益走势
+                dd
+                    ul.nav_pills
+                        li.active
+                            a(href='javascript:;') 年收益
+                        li
+                            a(href='javascript:;') 月收益
+                    div.font40 收益趋势
+        dl.dl_pannel_account
+            dt(style="font-weight:bold;color:#000") 本月还款计划
+                a.more(href=website+'/user/myrepayment.html?para1=2') 查看更多
+            dd
+                ul.nav_pills
+                    li
+                        span#datemonth
+                    li 应回款(元): &nbsp
+                        span#shouldPay 暂无数据
+                    li 已回款(元): &nbsp
+                        span#hasPay &nbsp 暂无数据
+                table.table(cellpadding='0',cellspacing='0')
+                    thead
+                        th(width='192') 回款日期
+                        th(width='266') 项目名称
+                        th(width='230') 应回本息(元)
+                        th(width='192') 状态
+                    tbody.colorlist.text-center.paylist
+                        tr
+                            td.font16(colspan="5")
+                                p.pad-top-30.pad-bottom-30 暂无数据
+
+                .pagination(style='margin-bottom:0').hidden
+        dl.dl_pannel_account
+            dt(style="font-weight:bold;color:#000") 交易明细
+                a.more(href=website+'/user/dealhistory.html?type=1') 查看更多
+            dd
+                ul.nav_pills
+
+                    li.active
+                        a(href='javascript:;' value='0') 全部
+                    li
+                        a(href='javascript:;' value='1') 充值
+                    li
+                        a(href='javascript:;' value='2') 提现
+                    li
+                        a(href='javascript:;' value='3') 投资
+                    li
+                        a(href='javascript:;' value='4') 回款
+
+                table.colorlist.table(cellpadding='0',cellspacing='0')
+                    thead
+                        th(width='119') 时间
+                        th(width='119') 交易类型
+                        th(width='339') 交易详情
+                        th 交易金额(元)
+                    tbody.text-center.trlist1
+                        tr
+                            td(style="text-align:center") 暂无数据
+                div.text-right.pad-top-5 最多显示5条记录
+        input#RepayStatus(type='hidden',value=RepayStatus)
+block script
+    include ../jslib/account/accountoverviewjs

@@ -1,0 +1,80 @@
+extend ../common
+block style
+    style.
+        .signin{
+            height:670px;
+            background: url("../images/banner-login.jpg") repeat-x top center;
+        }
+block main
+    section.signin
+        .container
+            dl.dl-signup
+                dt
+                    span 欢迎登录
+                    a(href=website+'/signup.html') 还没有账号? 立即注册
+                ol.tab_title
+                    li.border
+                        a(href='javascript:;').tab_link1.active 普通登录
+                    li
+                        a(href='javascript:;').tab_link2 手机动态密码登录
+                dd
+                    ul
+                        li.form-group
+                            input.form-control.mobilePhone(placeholder='手机号码',id='tel',name='tel',type='text',maxlength=11,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                            div.form-error
+                        li.form-group
+                            input.password.form-control(placeholder='密码',id='password',name='password',type='password',maxlength=20,onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')")
+                            div.form-error
+                        if 3 <= signinCount
+                            li.form-group.form-group-code-img(id='signinVcodeConfirm')
+                                div.clearfix
+                                    input.form-control(placeholder='图片验证码',id='signinVcode',type='text',maxlength=4)
+                                    img.btn-code-img(src=website+"/images/def.png")
+                                div.form-error
+                        else
+                            li.form-group.form-group-code-img.hidden(id='signinVcodeConfirm')
+                                div.clearfix
+                                    input.form-control(placeholder='图片验证码',id='signinVcode',type='text',maxlength=4)
+                                    img.btn-code-img(src=website+"/images/def.png")
+                                div.form-error
+                //div.pad-top-10
+                //    label.label_checkbox
+                //        input#isRemember(type='checkbox',checked)
+                //        span.ico
+                //        | 记住用户名
+                //    a.pull-right.color-gray(href='forgetpwdstart.html') 忘记密码？
+                //a.btn.btn-default(id='signinBtn') 立即登录
+                dd.hidden
+                    ul
+                        li.form-group
+                            input.form-control.mobilePhone(placeholder='手机号码',id='m_tel',name='tel',type='text',maxlength=11,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                            div.form-error
+                        li.form-group.form-group-code-img(id='signinVcodeConfirm')
+                            div.clearfix
+                                input.form-control(placeholder='图片验证码',id='m_signinVcode',type='text',maxlength=4)
+                                img.btn-code-img(src=website+"/images/def.png")
+                            div.form-error
+                        li.form-group.form-group-code-tel
+                            input.form-control(placeholder='动态密码',id='m_vcode',type='text',maxlength=6,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                            a.btn-code-tel(href='javascript:;' id="getMVcode") 获取动态密码
+                            div.form-error
+                    //div
+                    //    label.label_checkbox
+                    //        input#isRemember(type='checkbox',checked)
+                    //        span.ico
+                    //        | 记住用户名
+                    //a.btn.btn-default(id='m_signinBtn') 立即登录
+                div.pad-top-10
+                    label.label_checkbox
+                        input#isRemember(type='checkbox',checked)
+                        span.ico
+                        | 记住用户名
+                    a.pull-right.color-gray(href='forgetpwdstart.html') 忘记密码？
+                a.btn.btn-default(id='signinBtn') 立即登录
+                div.form-error
+                input(type='hidden' id='signTicket' name='signTicket' value='#{signTicket}')
+                input(type='hidden' id='signToken' name='signToken' value='#{signToken}')
+                input(type='hidden' id='signinCount' name='signinCount' value='#{signinCount}')
+block script
+    include ../jslib/userSign/signinjs
+

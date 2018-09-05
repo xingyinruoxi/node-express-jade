@@ -1,0 +1,48 @@
+extend ../common
+block position
+    - var position=true
+block main
+    section.container.bg-white
+        dl.dl-forgetpwd.forgetpwdmiddle
+            dt
+                .steps-round-bar
+                    .row
+                        .col-33.finish
+                            label 填写手机号
+                            span  1
+                        .col-33.cur
+                            label 设置新密码
+                            span  2
+                        .col-33
+                            label 完成
+                            span  3
+            dd
+                ul
+                    li.form-group.form-group-code-tel
+                        input#msgVCode.form-control(placeholder='手机验证码',name='codeTel',type='text',class='codeTel',maxlength=6,onkeyup="value=value.replace(/[^\\d]/g,'')",onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))")
+                        a.btn-code-tel(href='javascript:;')#getCellphoneVcode 获取验证码
+                        div.form-error
+                    li.form-group
+                        input#password.form-control(placeholder='密码',name='password',type='password',class='password',maxlength=20,onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')")
+                        div.form-error
+                    li.security-level.hidden.text-center.hidden
+                        //- div.pad-bottom-10.color-gray 请设置6-20位数字及字母组合密码
+                        .row
+                            .col-33.low
+                                span
+                                | 弱
+                            .col-33.middle
+                                span
+                                | 中
+                            .col-33.hight
+                                span
+                                | 高
+                    li.form-group
+                        input#repassword.form-control(placeholder='确认密码',name='repassword',type='password',class='repassword',maxlength=20,onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')")
+                        div.form-error
+                a#setComplete.btn.btn-default(href='javascript:;') 设置完成
+            input(type='hidden' id='signTicket' name='signTicket' value='#{signTicket}')
+            input(type='hidden' id='signToken' name='signToken' value='#{signToken}')
+block script
+    include ../jslib/userSign/forgetpwdmiddlejs
+

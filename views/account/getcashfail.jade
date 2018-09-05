@@ -1,0 +1,14 @@
+extend ../common
+block position
+    - var position=true
+block main
+    section.container.bg-white
+        .rechargeResult
+            div
+                i.ico.ico_fail
+            span.title 对不起，提现失败！
+            p.resultMsg
+            a.btn.btn-default(href=website+'/help/help/') 帮助中心
+            a.btn.btn-default.btn-solid(href=website+'/user/getcash.html') 再试一次
+block script
+    include ../jslib/account/rechargefailjs

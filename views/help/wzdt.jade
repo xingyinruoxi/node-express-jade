@@ -1,0 +1,44 @@
+extend ../common
+block position
+    - var position=true
+block main
+    section.help_website
+        h4 平台产品
+        p
+            a(href=website+'/piaojudai/',target='_blank') 票据贷
+            a(href=website+'/tuishuidai/',target='_blank') 退税贷
+            a(href=website+'/onSaleingProduct/',target='_blank') 当前在售
+        h4 投资者教育
+        p
+            a(href=website+'/tzzjy/flfg/',target='_blank') 法律法规
+            a(href=website+'/tzzjy/gfxwj/',target='_blank') 规范性文章
+            a(href=website+'/tzzjy/sfjs/',target='_blank') 司法解释
+            a(href=website+'/tzzjy/zsbk/',target='_blank') 知识百科
+            a(href=website+'/tzzjy/zlwz/',target='_blank') 专栏文章
+        h4 信息披露
+        p
+            a(href=website+'/xxpl/gsjs/',target='_blank') 公司介绍
+            a(href=website+'/xxpl/tdjs/',target='_blank') 团队介绍
+            a(href=website+'/xxpl/yysj.html',target='_blank') 运营数据
+            a(href=website+'/xxpl/tzgg/',target='_blank') 通知公告
+            a(href=website+'/xxpl/gsbg/',target='_blank') 公司报告
+            a(href=website+'/xxpl/gsdt/',target='_blank') 公司动态
+            a(href=website+'/xxpl/mtbd/',target='_blank') 媒体报道
+            a(href=website+'/xxpl/hzhb/',target='_blank') 合作伙伴
+            a(href=website+'/xxpl/lxwm/',target='_blank') 联系我们
+        h4 帮助中心
+        p.wzdt_help
+            //a(href=website+'/help/rmwt',target='_blank') 热门问题
+            //a(href=website+'/help/gsjs/',target='_blank') 金投手介绍
+            //a(href=website+'/help/zcdl/',target='_blank') 注册与登录
+            //a(href=website+'/help/cgbk/',target='_blank') 存管开户与绑卡
+            //a(href=website+'/help/cztx/',target='_blank') 充值与提现
+            //a(href=website+'/help/zjcj/',target='_blank') 资金出借
+            //a(href=website+'/help/syjl/',target='_blank') 收益与奖励
+            //a(href=website+'/help/aqbz/',target='_blank') 安全保障
+            a.hot(href=website+'/help/rmwt',target='_blank') 热门问题
+            -var items=helpType;
+            each item in items
+                a.other(tid=item.id,href=website+'/help/rmwt',target='_blank') #{item.name}
+block script
+    include ../jslib/help/wzdtjs

@@ -1,0 +1,35 @@
+extend ../common
+block main
+    section.activity_banner
+    section.activity_center
+        dl.container
+            dt.activity_center_title 热门活动
+            dd.row.hot_active
+            //- 分页
+            .pagination.hidden
+        //商家合作
+        //dl.container.mar-top-40
+            dt.activity_center_title 商家合作
+            dd.row.busParter
+                div.col-33
+                    div.activity_list_item
+                        a(href='#')
+                            img(src='../images/activity/activity-center1.png')
+                        div
+                            h4 WE绿而来 踏青之旅
+                            time 2017-04-15 — 2017-05-15
+                        p 春日暖，百花绽，踏青赏花正其时，金投手邀您开启时尚踏青之旅！快来免费领取踏青装备吧~
+                        a.btn.btn-default 参与活动
+                div.col-33
+                    div.activity_list_item
+                        a(href='#')
+                            img(src='../images/activity/activity-center2.png')
+                        div
+                            h4 WE绿而来 踏青之旅
+                            time 2017-04-15 — 2017-05-15
+                        p 春日暖，百花绽，踏青赏花正其时，金投手邀您开启时尚踏青之旅！快来免费领取踏青装备吧~
+                        a.btn.btn-default 参与活动
+
+
+block script
+    include ../jslib/activity/activityjs

@@ -1,0 +1,52 @@
+extend ../common
+block main
+block position
+    - var position=true
+block leftnav
+    -var leftnav=true
+block right_help
+    .right_xxpl
+        h3 联系我们
+        .aboutus_public
+            h4
+                img(src=website+'/images/aboutus/aboutus_2.png')
+            div
+                span.color-gray 公司名称：
+                | 金投手金融信息服务(北京)有限公司
+            div
+                span.color-gray 平台名称：
+                | 金投手
+            div
+                span.color-gray 平台网址：
+                | www.jintoushou.com
+            div
+                span.color-gray 公司地址：
+                | 北京市海淀区中关村丹棱街甲1号互联网金融中心B座22层
+            div
+                span.color-gray 联系电话：
+                | 400-101-7660
+            div
+                span.color-gray 平台公众号：
+                | jtoushou
+            div
+                span.color-gray 新浪微博：
+                | weibo.com/jtoushou
+            div
+                span.color-gray 腾讯微博：
+                | t.qq.com/jtoushou
+            .border_dashed(style='padding-bottom:40px;margin-bottom:15px;')
+                span.color-gray 企业QQ：
+                a(href='http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzkzODE3NzcwMV80NTQwOTVfNDAwMTAxNzYwMF8yXw',target='_blank') 点击咨询 >>
+            h4 媒体访问
+            div 邮箱：bd@jtoushou.com
+            p.color-gray.border_dashed.pad-top-10(style='padding-bottom:40px;margin-bottom:15px;') 如有采访需求，请将您的媒体名称、采访提纲、联系方式发至此邮箱，我们将尽快与您联系！
+            h4 商务合作
+            div 邮箱：bd@jtoushou.com
+            p.color-gray.border_dashed.pad-top-10(style='padding-bottom:40px;margin-bottom:15px;') 请将合作意向以邮件形式发送至此邮箱，我们将尽快与您联系！
+            h4 关注金投手
+            div
+                img(src=website+'/images/aboutus/aboutus_3.png')
+            p.pad-top-15(style='margin-left:17px;font-size:14px;') 微信公众号
+                span(style='margin-left:92px;') IOS安卓下载
+block script
+    include ../jslib/otherjs

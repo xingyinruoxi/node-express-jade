@@ -1,0 +1,14 @@
+extend ../common
+block main
+block position
+    - var position=true
+block leftnav
+    -var leftnav=true
+block right_help
+    .right_tzzjy.jydetail
+        .substance
+            .backtrack
+                a(href=listUrl) <i class="fa fa-angle-left" aria-hidden="true"></i> 返回列表
+            div#mediaDetail
+block script
+    include ../jslib/aboutus/noticedetailjs

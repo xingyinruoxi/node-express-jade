@@ -1,0 +1,17 @@
+extend ../common
+block position
+    - var position=true
+block main
+    section.container.bg-white
+        .rechargeResult
+            div
+                i.ico.ico_success
+            span.title 恭喜您充值成功！
+            p 充值金额(元)：
+                span#rechargeAmount 10，000.00
+                |&emsp;
+                span 存管账户可用余额(元)：#{accountInfo.accountBalance}
+            a.btn.btn-default(href=website+'/onSaleingProduct/') 我要出借
+            a.btn.btn-default.btn-solid(href=website+'/user/recharge.html') 继续充值
+block script
+    include ../jslib/account/rechargesuccessjs

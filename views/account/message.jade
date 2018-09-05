@@ -1,0 +1,31 @@
+extend ../common
+block position
+    - var position=true
+block topnotice
+    - var topnotice=true
+block left
+    - var left=true
+block right
+    section#section
+
+        dl.dl_pannel_account.clearfix(style='padding:0 12px')
+            dt 消息公告
+                span#notice
+            dd
+                ul.nav_pills
+                    li.active
+                        a(href='javascript:;' value='') 全部
+                    li(value='充值')
+                        a(href='javascript:;' value='true') 已读
+                    li
+                        a(href='javascript:;' value='false') 未读
+                .desc
+                    ul.messagelist
+                        //li
+                            h4.topic(width='119px') 的风格的那款给你的可能得附件克难攻坚的奶粉鸡年大吉那地方就能决定过年结的奶粉给大家
+                                span.pull-right 1222-2-22
+                            .branddesc 他的原句是这样的： 时光如水，总是无言。若你安好，便是晴天。其后面的都是大家后来加入的，这个可以随你所想啊，照他的这个格式去写就行
+
+                .pagination.hidden
+block script
+    include ../jslib/account/messagejs

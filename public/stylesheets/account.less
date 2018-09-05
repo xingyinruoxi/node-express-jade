@@ -1,0 +1,1042 @@
+@charset "utf-8";
+@import "base.less";
+.signin,.signup{
+    .min-width(@container-width);
+    margin-bottom: -40px;
+}
+//登录
+.layui-layer-signin{
+    .content{
+        padding-top: 64px;
+        .font18;
+    }
+}
+//注册
+.dl-signup{
+    @w:300px;
+    width: @w;
+    .pull-right;
+    background: #fff;
+    .border-radius();
+    margin-top: 56px;
+    padding: 0 45px 52px 40px;
+    margin-right: 60px;
+    overflow: hidden;
+    dt{
+        @h:58px;
+        .txt-ver(@h);
+        margin: 0 -40px;
+        margin-bottom: 20px;
+        padding:0 40px;
+        background-color: #F4F4F6;
+        span{
+            font-size: 22px;
+        }
+        >a{
+            .pull-right;
+            color: @color-red;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    dd{
+        color: @color-gray;
+    }
+    .tab_title{
+        margin-bottom:20px;
+
+        li{
+            @h:12px;
+            display: inline-block;
+            padding: 0 20px;
+            .txt-ver(@h);
+        }
+        .border{
+            border-right: 1px solid @color-gray;
+        }
+        a{
+            color: @color-gray;
+            .font18;
+            &.active{
+                color: @color-default;
+            }
+        }
+    }
+    .btn-default{
+        @h:48px;
+        .txt-ver(@h);
+        font-size: 22px;
+        margin-top: 15px;
+    }
+
+}
+.form-group-code-img input{
+    width:~'calc(100% - 100px)';
+    float: left;
+}
+.btn-code-img{
+    @codeImgWidth:90px;
+    cursor: pointer;
+    .pos(a);
+    width: @codeImgWidth;
+    height: 42px;
+    z-index: 9;
+    right: -5px;
+    top:0;
+}
+.btn-code-tel{
+    .btn-code-img;
+    top:10px;
+    right:-1px;
+    border-left:1px solid @color-gray;
+    .text-center;
+    height:24px;
+    line-height:24px;
+    color:@bg-red;
+    &:hover{text-decoration: underline;}
+}
+.security-level{
+    margin-bottom: 8px;
+    color: #fff;
+    span{
+        .block;
+        height:4px;
+        border-radius: 2px;
+        background: #F3F3F6;
+
+    }
+    .active{
+        color: @color-gray;
+    }
+
+    .low.active {
+        span{
+            background: #F65131;
+        }
+
+    }
+    .middle.active{
+        span{
+            background: #FFC500;
+        }
+
+    }
+    .hight.active{
+        span{
+            background: #03BB01;
+        }
+
+    }
+
+}
+//找回密码
+.dl-forgetpwd{
+    @border_gray:#F3F3F6;
+    padding:134px 52px 116px 52px;
+    margin-bottom: 40px;
+    h4{
+        font-size: 36px;
+        padding-top: 8px;
+        line-height: 40px;
+        color: @color-gray;
+        font-weight:normal;
+    }
+    p{
+        padding-top: 30px;
+        padding-bottom: 15px;
+    }
+    dt{
+        .text-center;
+        .col-33{
+            height: 3px;
+            background:#f3f3f5;
+            label{
+                color:#dbdbdb;
+                .block;
+                line-height: 52px;
+                margin-top: -64px;
+            }
+            span{
+                @h:22px;
+                display: inline-block;
+                .txt-ver(@h);
+                width: @h;
+                color: #fff;
+                border:2px solid #f3f3f5;
+                .border-radius(50%);
+                background:#dbdbdb;
+            }
+        }
+        .col-33.cur{
+            background: @bg-red;
+            label{
+                color:@color-red;
+            }
+            span{
+                border-color:@bg-red;
+                color: @color-red;
+                background: #fff;
+            }
+        }
+        .col-33.finish{
+            background:#F9A797;
+            label{
+                color:#F9A797;
+            }
+            span{
+                border-color:#F9A797;
+                color:#F9A797;
+                background: #fff;
+            }
+        }
+    }
+
+    dd{
+        @w:360px;
+        margin:0 @w;
+        padding-top: 70px;
+        padding-bottom: 115px;
+    }
+    .btn-default{
+        @h:48px;
+        .txt-ver(@h);
+        font-size: 22px;
+    }
+}
+//注册成功
+.signupSuccess{
+    width: 360px;
+    margin: 0 auto;
+    padding:150px 0;
+    padding-bottom: 222px;
+    margin-bottom: 40px;
+    .text-center;
+    h4{
+        font-size: 36px;
+        padding-top: 8px;
+        line-height: 40px;
+        color: @color-gray;
+        font-weight:normal;
+    }
+    .fa{
+        font-size: 72px;
+        color: @color-green;
+    }
+    p{
+        color:@color-gray;
+        padding-bottom: 15px;
+    }
+    .btn-default{
+        @h:48px;
+        .txt-ver(@h);
+        font-size:22px;
+        .pull-right;
+        margin-top:15px;
+    }
+}
+//侧边列表组
+#aside{
+    @w:210px;
+    width:@w;
+    .bg-white;
+    .pull-left;
+}
+
+.list_group{
+    .border_left(@color:#fff){
+        border-left:3px solid @color;
+    }
+    h4{
+        @h:66px;
+        .txt-ver(@h);
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: normal;
+        padding-left:60px;
+        border-top:1px solid #f3f3f5;
+    }
+    ol{
+        margin-bottom: 1px;
+        .bg-white;
+    }
+    li{
+        font-size: 16px;
+        &:hover,&.active{
+            a{
+                color:@color-red;
+                .border_left(@color-red);
+                background: #feedea;
+            }
+        }
+    }
+    a{
+        @h:62px;
+        .border_left();
+        .block;
+        .txt-ver(@h);
+        color:@color-gray;
+        padding-left:57px;
+        /* &:hover{
+           background-color: #FEEDEA;
+           border-left:1px red solid;
+         }*/
+    }
+}
+.alert_warning{
+    @w:1180px;
+    width:@w;
+    @h:40px;
+    @bg_color:#9595A9;
+    .txt-ver(@h);
+    .pos(r);
+    background: @bg_color;
+    .color-white;
+    .text-center;
+    margin-bottom: 16px;
+    a.btn_default,.btn_close{
+        .color-white;
+    }
+    .btn_default{
+        @h:20px;
+        padding:2px 8px;
+        .txt-ver(@h);
+        display: inline-block;
+        border:1px solid #fff;
+        .border-radius();
+        margin-left:8px;
+    }
+    .btn_close{
+        display: inline-block;
+        width: @h;
+        height:@h;
+        .pos(a);
+        right: 0;
+        font-size: 22px;
+        font-family:'simsun';
+    }
+}
+#section{
+    @w:950px;
+    width:@w;
+    .pull-right;
+    dt{
+        .fa.fa-angle-left{
+            .pos(r);
+            top:3px;
+            .font30;
+        }
+    }
+}
+.dl_pannel_account{
+    .bg-white;
+    color:@color-gray;
+    margin-bottom:20px;
+    padding:0 25px;
+    >dt,>dd{
+        padding: 0 15px;
+    }
+    dt a:hover{
+        color:#f55231;
+        text-decoration:underline;
+    }
+    >dt{
+        @h:56px;
+        .txt-ver(@h);
+        font-size: 18px;
+        border-bottom:1px solid #f3f3f6;
+        a:hover{
+            text-decoration:underline;
+            color:#f55231;
+        }
+        .more{
+            font-size: 14px;
+            color: @color-gray;
+            .pull-right;
+            margin-top: 8px;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    >dd{
+        .pos(r);
+        padding-bottom:30px;
+    }
+}
+//标签页
+.nav_pills{
+    @h:52px;
+    .txt-ver(@h);
+    li{
+        display: inline;
+    }
+    li{
+        display: inline-block;
+        .pull-left;
+        padding-right:30px;
+        color: @color-gray;
+        &:hover,&.active{
+            a{color: @color-red;}
+        }
+        a{
+            color: @color-gray;
+        }
+    }
+}
+//表格
+.table{
+    @border_color:#f3f3f6;
+    width: 100%;
+    border-top:1px solid @border_color;
+    border-right:1px solid @border_color;
+    th,td{
+        border-left:1px solid @border_color;
+        border-bottom:1px solid @border_color;
+        padding:10px 0;
+        border-collapse: collapse;
+    }
+    th{
+        background: @border_color;
+        font-weight:normal;
+    }
+}
+//银行存管账户信息
+.dl_bankAcountInfo .form_vertical{
+    @w:260px;
+    width: @w;
+    @h:40px;
+    margin-left: 120px;
+    margin-top: 10px;
+    .pos(r);
+    .form-control{
+        .txt-ver(@h);
+    }
+
+    li>label{
+        @w:120px;
+
+        .txt-ver(@h);
+        width: @w;
+        .text-right;
+        .pos(a);
+        left: -@w;
+        top:0;
+    }
+    .btn_send_code{
+        @h:40px;
+        width: 90px;
+        .txt-ver(@h);
+        .text-center;
+        border:1px solid @color-red;
+        .pos(a);
+        right: -112px;
+        color: @color-red;
+        top:0;
+    }
+    .btn-default{
+        @h:48px;
+        @w:360px;
+        width:@w;
+        margin-top: 10px;
+        .txt-ver(@h);
+        font-size:22px;
+    }
+}
+//重要提示
+.important_tips{
+    margin-top:70px;
+    border-top:1px solid #f3f3f6;
+    strong{
+        .block;
+        padding-top: 20px;
+    }
+    ul{
+        padding-left:2em;
+        padding-top:8px;
+        padding-bottom:100px;
+    }
+}
+//账户总览
+.dl_pannel_account{
+    .account_info{
+        padding:0;
+        .account_balance {
+            border-left: 1px solid #f3f3f6;
+            margin-left: -6px;
+            padding-left: 40px;
+            height:124px;
+            .welcome{
+                @h:44px;
+                .txt-ver(@h);
+                padding-bottom:2px;
+            }
+            .btn_take,.btn_recharge{
+                @h:26px;
+                .txt-ver(@h);
+                display: inline-block;
+                width: 74px;
+                border:1px solid @color-red;
+                color: @color-red;
+            }
+            .btn_recharge{
+                margin-right:10px;
+                background:@bg-red;
+                color:@color-white;
+            }
+            .btn_open{
+                @h:30px;
+                .txt-ver(@h);
+                width: 170px;
+                .color-white;
+            }
+            .user_old{
+                p{
+                    line-height: 40px;
+                }
+                .btn_take,.btn_recharge{.pull-right;margin-top:44px;}
+            }
+            .user_new{
+                .pull-left;
+            }
+
+        }
+        .icos{
+            padding-top:4px;
+            .ico a{
+                color:#f55231;
+            }
+            .ico{
+                width: 24px;
+                height:24px;
+                .block;
+                cursor: pointer;
+                .pull-left;
+                .pos(r);
+                margin-right:10px;
+            }
+            .ico_tel{
+                background-position:-94px -227px;
+                &.active{
+                    background-position:-94px -256px;
+                }
+            }
+            .ico_user{
+                background-position:-127px -227px;
+                &.active{
+                    background-position:-127px -256px;
+                }
+            }
+            .ico_clock{
+                background-position:-162px -227px;
+                &.active{
+                    background-position:-162px -256px;
+                }
+            }
+            .ico_email{
+                background-position:-195px -227px;
+                &.active{
+                    background-position:-195px -256px;
+                }
+            }
+        }
+        header{
+            padding:40px 0;
+            padding-left:15px;
+        }
+        .avotar{
+            .block;
+            .pull-left;
+            width: 120px;
+            height:120px;
+        }
+        .progress{
+            .progress();
+        }
+        .account_describe{
+
+            @w:294px;
+            padding-left:22px;
+            .pull-left;
+            .welcome{
+                @h:44px;
+                .txt-ver(@h);
+                padding-bottom:2px;
+            }
+        }
+        .steps{
+            padding:10px 0;
+            a{
+                color:@color-red;
+                padding-left:34px;;
+            }
+        }
+
+    }
+}
+.form-group.card_bank_info{
+    width: 500px;
+    margin-bottom: 54px
+}
+.card_bank_box{
+    @w:278px;
+    width:@w;
+    @h:165px;
+    height:@h;
+    background:#E9E9ED;
+    border-radius: 8px;
+    padding-top:6px;
+}
+.card_bank_none{
+    width:265px;
+    height:117px;
+    line-height:117px;
+    background:#F3F3F6;
+    border:1px dashed #DDDDDF;
+    .color-gray;
+    .text-center;
+}
+.card_bank{
+    @w:264px;
+    @h:156px;
+    @footer_h:40px;
+    .def {
+        height: 158px;
+        line-height: 158px;
+    }
+    .text-center;
+    width:@w;
+    height:@h;
+    border: 2px solid #9595AA;
+    margin:0 auto;
+    border-radius: 8px;
+    .content{
+        @h:94px;
+        height:@h;
+        padding:10px 15px;
+        background: #fff;
+        border-radius: 8px 8px 0 0;
+        .num{
+            @h:50px;
+            font-size:24px;
+            .txt-ver(@h);
+        }
+    }
+    footer{
+        .txt-ver(@footer_h);
+        font-size:12px;
+        background: #F3F3F6;
+        border-radius: 0 0 8px 8px;
+        border-top:1px dashed #9595AA;
+    }
+}
+//充值结果
+.rechargeResult{
+    .text-center;
+    .color-gray;
+    padding-top:150px;
+    padding-bottom:222px;
+    .title{
+        .block;
+        font-size:36px;
+        padding-bottom:20px;
+        margin-top:20px;
+    }
+    p{
+        padding-bottom:30px;
+    }
+    .btn{
+        @h:48px;
+        @w:180px;
+        font-size:22px;
+        width: @w;
+        .txt-ver(@h);
+        margin:0 15px;
+    }
+}
+#lay_open_result div{
+    font-size:16px;
+    line-height: 30px;
+    padding-top:64px;
+}
+
+#lay_login_alert{
+    position: relative;
+    width: 75%;
+    overflow: hidden;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+#branchNoTip{
+    .pos(a);
+    left:376px;
+    width: 384px;
+    top:0;
+}
+//提现结果弹窗
+
+#lay_cash_result{
+
+    .layui-layer-btn a {
+        border: none;
+        height: 48px;
+        line-height: 48px;
+        background: #f55231;
+        cursor: pointer;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        font-size: 22px;
+    }
+    .title{
+        margin-top:50px;
+        font-size:22px;
+        line-height: 40px;
+        color:#9595AA
+    }
+    .wait_text{
+        line-height: 20px;
+        font-size: 14px;
+    }
+    span{
+        color:@color-red;
+    }
+    .ico_wait{margin-top:58px}
+    .wait_title{
+        font-size: 30px;
+        line-height:90px ;
+        margin-bottom: 10px;
+    }
+}
+//.btnflt{
+//  font-size: 24px;
+//  display: inline-block;
+//  margin-bottom: 42px;
+//}
+.btn1{
+    float:left;
+    width:170px;
+    line-height: 48px;
+    height:48px;
+    background-color: #fff;
+    color:#F55131;
+    border: 1px solid #F55131;
+}
+.btn2{
+    line-height: 46px;
+    float: right;
+    width:170px;
+    height:48px;
+}
+.btnbox1{
+    background-color: #fff;
+}
+/*遮罩及弹出框(登录) start*/
+#pop_container, .pop_container {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0, 1%, 21%, 0.7);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+.alert {
+    display: none;
+    position: fixed;
+    width: 100%;
+    bottom: 15%;
+    height: 40px;
+    text-align: center;
+    z-index: 99999;
+
+}
+.alert > span {
+    color: #ffffff;
+    line-height: .40rem;
+    font-size: .15rem;
+    padding: .10rem;
+    border-radius: .05rem;
+    background: rgba(0, 0, 0, .7);
+}
+.m_alert{
+    position: fixed;
+    z-index: 20;
+    width: 380px;
+    height: 370px;
+    top: 50%;
+    left: 50%;
+    margin-left: -190px;
+    margin-top: -185px;
+    display: none;
+    .dl-signup{
+        margin: 0;
+        float: none;
+    }
+}
+.tooltip {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-left: 4px;
+    text-align: center;
+    border-radius: 8px;
+    background: #eae5ec;
+    font-size: 12px;
+    line-height: 16px;
+    position: relative;
+}
+
+.pad-left-20{
+    padding-left: 20px;
+}
+.account_point{
+    display:inline-block;
+    width:8px;
+    height:8px;
+    line-height:16px;
+    margin-right:12px;
+    background-color: #DF8375;
+}
+.title2{
+    .account_point{
+        background-color: #9FDFCB;
+    }
+}
+.title3{
+    .account_point{
+        background-color: #FBDD7F;
+    }
+}
+.title4{
+    .account_point{
+        background-color:#ffff4f;
+    }
+}
+.title5{
+    .account_point{
+        background-color: #9595A9;
+    }
+}.title6{
+     .account_point{
+         background-color:#4B5387;
+     }
+ }
+.branddesc{
+    width:636px;
+    margin-top:10px
+}
+.trlist{
+    td{
+        width:150px
+    }
+}
+.message-div{
+    padding:5px 0 30px;
+    border-bottom: 1px solid #f3f3f6;
+}
+//邀请好友
+.invitedfriends{
+    padding-top: 62px;
+    padding-bottom: 10px;
+    .font16;
+    .text-center;
+    .color-gray;
+}
+.invitedfriends_group{
+    width: 646px;
+    height: 44px;
+    margin:1px auto 20px -90px;
+    border: 1px solid #9595aa;
+    border-radius: 3px;
+    line-height:44px;
+    color: #3d3e83;
+    text-indent:10px;
+}
+.invitedfriends_btn{
+    background: #f55231;
+    border:none;
+    outline:none;
+    border-radius: 3px;
+    width: 164px;
+    margin-left: -28px;
+    display: block;
+    @h: 46px;
+    .font16;
+    .color-white;
+    .text-center;
+    .txt-ver(@h);
+}
+//安全设置
+.font16{
+    font-size: 16px;
+}
+.pad-top-20{
+    padding-top: 20px;
+}
+.account_progress_box{
+    width:300px;
+    padding-top:3px;
+    padding-bottom:26px;
+    margin-left:-20px;
+    .account_progress{
+        height:3px;
+        margin-top:8px;
+        overflow: hidden;
+        background-color: #f3f3f6;
+        border-radius: 5px;
+        .account_progress_bar{
+            .pull-left;
+            width:0;
+            height:3px;
+            background-color: #f55231;
+            border-radius: 5px;
+            -webkit-transition: width .6s ease;
+            -o-transition: width .6s ease;
+            transition: width .6s ease;
+        }
+    }
+}
+.securitysetup_list{
+    height: 49px;
+    line-height:50px;
+    border-bottom: 1px solid #F3F3F6;
+    .col-40{
+        margin-left: -20px;
+    }
+    .fa{
+        font-size: 16px;
+    }
+}
+//风险测评
+.layer_question.securitytesting_question{
+    h5{
+        padding-top: 20px;
+        padding-bottom: 0;
+    }
+    .answer{
+        padding-top: 10px;
+        .font18();
+    }
+    li{
+        padding-top: 15px;
+        padding-bottom: 10px;
+        .ask{
+            line-height: 30px;
+        }
+    }
+    .submit{
+        //border: 1px red solid;
+        .submit_tip{
+            height: 28px;
+            p{
+                text-align: center;
+                .font13();
+            }
+        }
+        .btn{
+            cursor: pointer;
+            .font18();
+            .color-white;
+            height: 40px;
+            line-height: 40px;
+            width: 200px;
+            background:#F55231;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
+}
+tbody .colorlist{
+    tr:first-child{
+        color: @color-red;
+    }
+}
+//提示
+.account_describe .ico{
+    .text{
+        position:absolute; z-index:55; display:none; box-shadow:0 2px 3px #e5e6ed; white-space:nowrap; background:#fff; height:26px; line-height:26px; padding:0 8px; border:1px solid #9595aa; color:#9595aa; border-radius:3px; top:31px; left:0; margin-left:14px;
+    }
+    i{
+        display:block; height:9px; margin-left:6px; background: url("/images/account/angle_up.png") no-repeat center; width:100%; position:absolute; top:-9px; left:-8px;
+    }
+    &:hover{
+        .text{ display:block; }
+    }
+}
+.title .tooltip{
+    .account_describe .ico;
+    .text{
+        margin-left:-63px;
+        top:22px
+    }
+}
+.color-bluetitle{
+    color:#222B66
+}
+/*协议样式*/
+.register{
+    .container;
+    .bg-white;
+    .color-gray;
+    margin-top: 40px;
+    .centent{
+        padding: 20px 50px 70px;
+        h2{
+            .text-center;
+            color: #3d3e83;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+        h4{
+            color: #3d3e83;
+        }
+        ol{
+            text-align: justify;
+            padding-bottom: 15px;
+            ol.text-indent{
+                padding-bottom: 0;
+            }
+        }
+        p{
+            color: #3d3e83;
+            text-align: justify;
+        }
+        table{
+            color: #3d3e83;
+            width:90%;
+            margin: 10px auto 0;
+            border-top: 1px solid #3d3e83;
+            border-right: 1px solid #3d3e83;
+            td{
+                border-left: 1px solid #3d3e83;
+                border-bottom: 1px solid #3d3e83;
+                padding: 6px 0;
+                border-collapse: collapse;
+            }
+        }
+    }
+}
+.payment1{
+    height:32px;
+    li{
+        height:32px;
+    }
+}
+.unread_title .color-bluetitle{
+    color: #9595aa;
+}
+/*测评结果页按钮*/
+.layui-layer-result{
+    .layui-layer-btn.layui-layer-btn-cn a{
+        width:35%;
+        margin-top:-80px;
+        margin-right:273px;
+    }
+}
+

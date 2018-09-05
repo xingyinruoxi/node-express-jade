@@ -1,0 +1,90 @@
+extends ../common
+block position
+    - var position=false
+block main
+    //- banner jo
+    div.banner(class=(ptype==='chukoutuishui')?'banner_factoring':'banner_piaojudai')
+        a.btn(rel='nofollow' href='javascript:;') 立即投资
+    //- 产品特色 jo
+    section.container(style="margin-top: -24px;")
+        div.product-feature
+            div.bg-shadow
+            if(ptype=='piaojudai')
+                div.row
+                    div.col-25
+                        div.icon
+                            img(src=website+'/images/index/icon20.png')
+                            span  银行承兑
+                    div.col-25
+                        div.icon
+                            img(src=website+'/images/index/icon21.png')
+                            span 安全稳健
+                    div.col-25
+                        div.icon
+                            img(src=website+'/images/index/icon22.png')
+                            span 期限灵活
+                    div.col-25.no-line
+                        div.icon
+                            img(src=website+'/images/index/icon23.png')
+                            span 收益稳盈
+            else
+                div.row
+                    div.col-25
+                        div.icon
+                            img(src=website + '/images/index/icon24.png')
+                            span  账户共管
+                    div.col-25
+                        div.icon
+                            img(src=website + '/images/index/icon25.png')
+                            span 政信保障
+                    div.col-25
+                        div.icon
+                            img(src=website + '/images/index/icon22.png')
+                            span 期限灵活
+                    div.col-25.no-line
+                        div.icon
+                            img(src=website + '/images/index/icon23.png')
+                            span 收益稳盈
+    section.container.product(style="margin-top: -24px;")
+        //- 产品列表
+        ul.product_list.product-list.clearfix
+            //div.def 暂无数据
+            //- for(i=0;i<15;i++)
+            //if (i%4==0)
+            //    li.product_item(style='margin-left:0').clearfix
+            //        dl
+            //            dt 金保理第083期
+            //            dd
+            //                .percent 7.00%
+            //                .row.color-gray
+            //                    .col-50
+            //                        p 投资期限
+            //                            span 27天
+            //                    .col-50
+            //                        p 规模
+            //                            span 19.80万
+            //                .progress
+            //                    .progress_bar(style='width:100%')
+            //                a.btn.btn-default(href='#') 已满标
+            //else
+            //    li.product_item.clearfix
+            //        dl
+            //            dt 金保理第083期
+            //            dd
+            //                .percent 7.00%
+            //                .row.color-gray
+            //                    .col-50
+            //                        p 投资期限
+            //                            span 27天
+            //                    .col-50
+            //                        p 规模
+            //                            span 19.80万
+            //                .progress
+            //                    .progress_bar(style='width:100%')
+            //                a.btn.btn-default(href='#') 已满标
+
+        //- 分页 jo
+        .pagination.hidden
+        input#ptype(type='hidden' value='#{ptype}')
+block script
+    include ../jslib/product/factoringjs

@@ -1,0 +1,61 @@
+extends ../common
+block position
+    - var position=false
+block main
+    //- banner jo
+    div.banner.banner_currentsale
+        a.btn(rel='nofollow' href='javascript:;') 立即投资
+    //- 产品特色 jo
+    section.container(style="margin-top: -24px;")
+        div.product-feature
+            div.bg-shadow
+            div.row
+                div.col-25
+                    div.icon
+                        img(src=website+'/images/index/icon30.png')
+                        span  优质资产
+                div.col-25
+                    div.icon
+                        img(src=website+'/images/index/icon22.png')
+                        span 精选项目
+                div.col-25
+                    div.icon
+                        img(src=website+'/images/index/icon31.png')
+                        span 收益更高
+                div.col-25.no-line
+                    div.icon
+                        img(src=website+'/images/index/icon23.png')
+                        span 安全保障
+    //-理财排行榜 投资记录
+    section.container.bg-none.financial_ranking
+        div.row.mar-top-40#rangk(style="margin-top:-5px;")
+            div.col-50
+                dl.scroll-text.product-order
+                    dt 出借排行榜
+                    dd
+                        h4.row
+                            span.col-20 排名
+                            span.col-50 用户手机号
+                            span.col-30 出借金额(元)
+                        ul.list-unstyled.ranker
+            div.col-50
+                dl.scroll-text.product-history
+                    dt 最新出借记录
+                    dd
+                        h4.row
+                            span.col-20 来源
+                            span.col-50 用户手机号
+                            span.col-30 出借金额(元)
+                        div#FontScroll
+                            ul.list-unstyled.line(style="margin-top: ;")
+
+    section.container.product
+        //- 产品列表
+        ul.product_list.product-list.clearfix
+            //div.def 暂无数据
+
+        //- 分页 jo
+        .pagination.hidden
+
+block script
+    include ../jslib/product/currentonsalejs
